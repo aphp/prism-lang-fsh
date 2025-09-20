@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prism Language FSH - Visual Test</title>
+    
+    <!-- Prism CSS themes -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.min.css" rel="stylesheet" />
+    <link rel="stylesheet" id="theme-link" />
+    
+    <!-- FSH styles -->
+    <link href="../src/prism-lang-fsh.css" rel="stylesheet" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .controls label {
+            display: inline-block;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+        
+        .controls select,
+        .controls button {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .controls button {
+            background: #3498db;
+            color: white;
+            border: none;
+        }
+        
+        .controls button:hover {
+            background: #2980b9;
+        }
+        
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .test-section h3 {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        
+        .description {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+        
+        pre[class*="language-"] {
+            margin: 0;
+            border-radius: 4px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+        }
+        
+        .fsh-input {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        #output {
+            padding: 20px;
+            border-radius: 4px;
+            min-height: 100px;
+        }
+        
+        .status {
+            padding: 10px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .footer {
+            text-align: center;
+            color: #7f8c8d;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Prism Language FSH - Visual Test Suite</h1>
+        
+        <div class="status" id="status">
+            Loading Prism.js and language definition...
+        </div>
+        
+        <div class="controls">
+            <label for="theme-selector">Theme:</label>
+            <select id="theme-selector">
+                <option value="prism" selected>Default</option>
+                <option value="prism-tomorrow">Tomorrow</option>
+                <option value="prism-okaidia">Okaidia</option>
+                <option value="prism-twilight">Twilight</option>
+                <option value="prism-coy">Coy</option>
+                <option value="prism-solarizedlight">Solarized Light</option>
+                <option value="prism-dark">Dark</option>
+                <option value="prism-funky">Funky</option>
+            </select>
+            
+            <button onclick="highlightAll()">Re-highlight All</button>
+            <button onclick="runTests()">Run Tests</button>
+        </div>
+
+        <h2>📝 Test Cases</h2>
+        
+        <div class="grid">
+            <!-- Comments Test -->
+            <div class="test-section">
+                <h3>FSH Comments</h3>
+                <p class="description">Testing single-line and multi-line comments in FSH</p>
+                <pre><code class="language-fsh">// Single-line comment
+/* Multi-line
+   comment for documentation */
+
+// Comments in different contexts
+Profile: TestProfile // Inline comment
+Parent: Patient
+/* This is a multi-line comment
+   describing the profile purpose */</code></pre>
+            </div>
+
+            <!-- Aliases Test -->
+            <div class="test-section">
+                <h3>Aliases</h3>
+                <p class="description">Testing alias definitions with URLs</p>
+                <pre><code class="language-fsh">Alias: $sct = http://snomed.info/sct
+Alias: $loinc = http://loinc.org
+Alias: $ucum = http://unitsofmeasure.org
+Alias: $v2-0203 = http://terminology.hl7.org/CodeSystem/v2-0203</code></pre>
+            </div>
+
+            <!-- Definition Keywords Test -->
+            <div class="test-section">
+                <h3>Definition Keywords</h3>
+                <p class="description">Testing FSH artifact definition keywords</p>
+                <pre><code class="language-fsh">Profile: MyProfile
+Extension: MyExtension
+Instance: MyInstance
+ValueSet: MyValueSet
+CodeSystem: MyCodeSystem
+RuleSet: MyRuleSet
+Invariant: MyInvariant
+Mapping: MyMapping
+Logical: MyLogical
+Resource: MyResource</code></pre>
+            </div>
+
+            <!-- Metadata Keywords Test -->
+            <div class="test-section">
+                <h3>Metadata Keywords</h3>
+                <p class="description">Testing metadata definition keywords</p>
+                <pre><code class="language-fsh">Profile: ExampleProfile
+Id: example-profile
+Parent: Patient
+Title: "Example Profile"
+Description: "A test profile"
+Usage: #definition
+Context: Patient
+Severity: #error
+Expression: "name.exists()"</code></pre>
+            </div>
+
+            <!-- Strings Test -->
+            <div class="test-section">
+                <h3>Strings & Multi-line Strings</h3>
+                <p class="description">Testing regular and multi-line string formats</p>
+                <pre><code class="language-fsh">Title: "Regular string"
+Description: """
+Multi-line string with
+multiple lines of text
+and proper formatting.
+"""
+
+* code = SCT#123456 "Display text"
+* text = "String with \"escaped\" quotes"</code></pre>
+            </div>
+
+            <!-- Code References Test -->
+            <div class="test-section">
+                <h3>Code References</h3>
+                <p class="description">Testing various code reference formats</p>
+                <pre><code class="language-fsh">// Simple codes
+* status = #active
+* gender = #male
+
+// System codes
+* code = SCT#123456 "Hypertension"
+* code = http://loinc.org#1234-5
+
+// Alias references
+* code = $sct#123456
+* system = $loinc</code></pre>
+            </div>
+
+            <!-- Cardinalities Test -->
+            <div class="test-section">
+                <h3>Cardinalities</h3>
+                <p class="description">Testing cardinality expressions</p>
+                <pre><code class="language-fsh">* identifier 1..1
+* name 1..*
+* telecom 0..*
+* address 0..3
+* contact 0..5</code></pre>
+            </div>
+
+            <!-- Flags and Modifiers Test -->
+            <div class="test-section">
+                <h3>Flags & Modifiers</h3>
+                <p class="description">Testing FSH flags and modifier symbols</p>
+                <pre><code class="language-fsh">* identifier MS
+* name SU
+* birthDate MS SU
+* extension ?!
+* status D
+* version TU N</code></pre>
+            </div>
+
+            <!-- Rule Paths Test -->
+            <div class="test-section">
+                <h3>Rule Paths</h3>
+                <p class="description">Testing FSH rule paths and element navigation</p>
+                <pre><code class="language-fsh">* identifier.system 1..1
+* name.family 1..1
+* address[home].use = #home
+* extension[birthPlace].valueAddress.city
+* value[x] only string
+* ^status = #active
+* ^version = "1.0.0"</code></pre>
+            </div>
+
+            <!-- Action Keywords Test -->
+            <div class="test-section">
+                <h3>Action Keywords</h3>
+                <p class="description">Testing FSH action and binding keywords</p>
+                <pre><code class="language-fsh">* address contains home 0..1 and work 0..*
+* value[x] only CodeableConcept
+* obeys patient-rule
+* code from MyValueSet (required)
+* category from http://example.org/vs (extensible)
+* insert CommonRules
+* include codes from system $sct
+* exclude codes where concept is-a #123456</code></pre>
+            </div>
+
+            <!-- Binding Strengths Test -->
+            <div class="test-section">
+                <h3>Binding Strengths</h3>
+                <p class="description">Testing terminology binding strength indicators</p>
+                <pre><code class="language-fsh">* code from ValueSet1 (required)
+* category from ValueSet2 (extensible)
+* method from ValueSet3 (preferred)
+* note from ValueSet4 (example)</code></pre>
+            </div>
+
+            <!-- URLs Test -->
+            <div class="test-section">
+                <h3>URLs</h3>
+                <p class="description">Testing URL recognition in various contexts</p>
+                <pre><code class="language-fsh">* system = "http://hl7.org/fhir/sid/us-ssn"
+* type from http://hl7.org/fhir/ValueSet/identifier-type
+* ^url = "http://example.org/fhir/StructureDefinition/test"</code></pre>
+            </div>
+        </div>
+
+        <h2>🧪 Complex FSH Examples</h2>
+
+        <div class="test-section">
+            <h3>Complete FSH Profile</h3>
+            <p class="description">A comprehensive FSH profile example with all major features</p>
+            <pre><code class="language-fsh">// ===============================================
+// Enhanced Patient Profile with Extensions
+// ===============================================
+
+Alias: $sct = http://snomed.info/sct
+Alias: $loinc = http://loinc.org
+Alias: $v2-0203 = http://terminology.hl7.org/CodeSystem/v2-0203
+
+Profile: EnhancedPatient
+Parent: Patient
+Id: enhanced-patient
+Title: "Enhanced Patient Profile"
+Description: """
+This profile defines additional constraints and
+extensions for patient resources in our system.
+It demonstrates comprehensive FSH syntax.
+"""
+
+// Metadata
+* ^status = #active
+* ^version = "1.0.0"
+* ^date = "2024-01-15"
+
+// Must have at least one identifier
+* identifier 1..* MS
+* identifier.system 1..1
+* identifier.value 1..1
+* identifier.type from http://hl7.org/fhir/ValueSet/identifier-type (required)
+
+// Name constraints with slicing
+* name 1..* MS
+* name.family 1..1
+* name.given 1..*
+
+// Birth date is required
+* birthDate 1..1 MS
+
+// Gender from specific value set
+* gender from http://hl7.org/fhir/ValueSet/administrative-gender (required)
+
+// Extension for birth place
+* extension contains BirthPlace named birthPlace 0..1 MS
+* extension[birthPlace].valueAddress.city 1..1
+* extension[birthPlace].valueAddress.country 1..1
+
+// Address slicing example
+* address ^slicing.discriminator.type = #pattern
+* address ^slicing.discriminator.path = "use"
+* address ^slicing.rules = #open
+* address contains
+    home 0..1 MS and
+    work 0..*
+* address[home].use = #home
+* address[home].line 1..*
+* address[work].use = #work
+
+// Invariant application
+* obeys patient-name-check
+
+Invariant: patient-name-check
+Description: "Patient must have either a given or family name"
+Expression: "name.given.exists() or name.family.exists()"
+Severity: #error
+
+// Extension Definition
+Extension: BirthPlace
+Id: birthplace-extension
+Title: "Birth Place"
+Description: "The location where the patient was born"
+Context: Patient
+
+* value[x] only Address
+* valueAddress.city 1..1 MS
+* valueAddress.country from http://hl7.org/fhir/ValueSet/iso3166-1-2 (required)
+
+// ValueSet Definition
+ValueSet: PatientIdTypes
+Id: patient-id-types
+Title: "Patient Identifier Types"
+Description: "Types of identifiers used for patients"
+
+* include codes from system $v2-0203
+* include $sct#123456 "Custom ID Type"
+* exclude $v2-0203#TEMP "Temporary identifier"</code></pre>
+        </div>
+
+        <h2>🔧 FSH Input Tester</h2>
+
+        <div class="test-section">
+            <h3>Try Your Own FSH Code</h3>
+            <p class="description">Enter FSH code to test the syntax highlighting</p>
+            <textarea id="fsh-input" class="fsh-input" placeholder="Enter your FSH code here...">// Type or paste your FSH code here
+Profile: TestProfile
+Parent: Patient
+Id: test-profile
+Title: "Test Profile"
+
+* identifier 1..* MS
+* name 1..1
+* birthDate 0..1</textarea>
+            <button onclick="highlightfsh()">Highlight</button>
+            <div id="output"></div>
+        </div>
+
+        <div class="footer">
+            <p>Prism Language FSH Plugin v0.1.0 | Visual Test Suite</p>
+            <p>Powered by <a href="https://prismjs.com">Prism.js</a></p>
+        </div>
+    </div>
+
+    <!-- Load Prism.js and FSH definition with proper async loading -->
+    <script>
+        // Global promise to track when both scripts are loaded
+        window.prismReady = new Promise(async (resolve, reject) => {
+            try {
+                // Load Prism.js first
+                await loadScriptAsync('https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js');
+                console.log('Prism.js loaded successfully');
+
+                // Then load FSH language definition
+                await loadScriptAsync('../src/prism-lang-fsh.js');
+                console.log('FSH language definition loaded successfully');
+
+                // Verify everything is loaded
+                if (typeof Prism !== 'undefined' && Prism.languages.fsh) {
+                    console.log('Both Prism and FSH language are ready');
+                    resolve(true);
+                } else {
+                    reject('FSH language not available after loading');
+                }
+            } catch (error) {
+                console.error('Error loading scripts:', error);
+                reject(error);
+            }
+        });
+
+        function loadScriptAsync(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = resolve;
+                script.onerror = () => reject(new Error(`Failed to load: ${src}`));
+                document.head.appendChild(script);
+            });
+        }
+    </script>
+
+    <script>
+        // Status element
+        const statusEl = document.getElementById('status');
+        
+        // Initialize everything once scripts are loaded
+        window.addEventListener('load', async () => {
+            try {
+                await window.prismReady;
+                statusEl.textContent = '✅ Prism.js and fsh language definition loaded successfully!';
+                statusEl.classList.remove('error');
+
+                // Initial highlighting
+                Prism.highlightAll();
+
+                // Highlight the FSH input example
+                setTimeout(highlightfsh, 100);
+            } catch (error) {
+                statusEl.textContent = `❌ Error: ${error}`;
+                statusEl.classList.add('error');
+                console.error('Failed to load Prism:', error);
+            }
+        });
+        
+        // Theme switcher
+        document.getElementById('theme-selector').addEventListener('change', (e) => {
+            const theme = e.target.value;
+            const themeLink = document.getElementById('theme-link');
+            themeLink.href = `https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/${theme}.min.css`;
+        });
+        
+        // Re-highlight all code
+        async function highlightAll() {
+            try {
+                await window.prismReady;
+                Prism.highlightAll();
+                statusEl.textContent = '✅ Code re-highlighted!';
+                statusEl.classList.remove('error');
+            } catch (error) {
+                statusEl.textContent = '❌ Cannot highlight: Prism not loaded';
+                statusEl.classList.add('error');
+            }
+        }
+        
+        // Highlight fsh input
+        async function highlightfsh() {
+            try {
+                await window.prismReady;
+
+                const input = document.getElementById('fsh-input').value;
+                const output = document.getElementById('output');
+
+                if (!input.trim()) {
+                    output.innerHTML = '<em>Enter some code to highlight...</em>';
+                    return;
+                }
+
+                // Create highlighted HTML
+                const highlighted = Prism.highlight(input, Prism.languages.fsh, 'fsh');
+                output.innerHTML = `<pre class="language-fsh"><code class="language-fsh">${highlighted}</code></pre>`;
+            } catch (error) {
+                console.error('Error highlighting code:', error);
+                const output = document.getElementById('output');
+                output.innerHTML = `<em>Error highlighting code: ${error.message}</em>`;
+            }
+        }
+        
+        // Run automated tests
+        async function runTests() {
+            try {
+                await window.prismReady;
+                console.log('Running tests...');
+
+            const tests = [
+                {
+                    name: 'Comments',
+                    code: '// test comment',
+                    expected: 'comment'
+                },
+                {
+                    name: 'Alias',
+                    code: 'Alias: $sct = http://snomed.info/sct',
+                    expected: 'alias'
+                },
+                {
+                    name: 'Definition Keywords',
+                    code: 'Profile: TestProfile',
+                    expected: 'definition-keyword'
+                },
+                {
+                    name: 'Metadata Keywords',
+                    code: 'Title: "Test"',
+                    expected: 'metadata-keyword'
+                },
+                {
+                    name: 'Strings',
+                    code: '"test string"',
+                    expected: 'string'
+                },
+                {
+                    name: 'Multi-line Strings',
+                    code: '"""test\nmulti-line"""',
+                    expected: 'multiline-string'
+                },
+                {
+                    name: 'Code References',
+                    code: '#active',
+                    expected: 'code'
+                },
+                {
+                    name: 'Cardinalities',
+                    code: '1..*',
+                    expected: 'cardinality'
+                },
+                {
+                    name: 'Modifiers',
+                    code: 'MS',
+                    expected: 'modifier'
+                },
+                {
+                    name: 'Action Keywords',
+                    code: 'contains',
+                    expected: 'action-keyword'
+                },
+                {
+                    name: 'Binding Strengths',
+                    code: '(required)',
+                    expected: 'binding-strength'
+                },
+                {
+                    name: 'URLs',
+                    code: 'http://example.org',
+                    expected: 'url'
+                },
+                {
+                    name: 'Rule Paths',
+                    code: '* identifier.system',
+                    expected: 'rule-path'
+                }
+            ];
+            
+            let passed = 0;
+            let failed = 0;
+            
+            tests.forEach(test => {
+                const tokens = Prism.tokenize(test.code, Prism.languages.fsh);
+                const hasExpectedToken = tokens.some(token => 
+                    token.type === test.expected || 
+                    (typeof token === 'object' && token.type === test.expected)
+                );
+                
+                if (hasExpectedToken) {
+                    console.log(`✅ ${test.name}: PASSED`);
+                    passed++;
+                } else {
+                    console.error(`❌ ${test.name}: FAILED`);
+                    failed++;
+                }
+            });
+            
+                statusEl.textContent = `Tests complete: ${passed} passed, ${failed} failed`;
+                if (failed > 0) {
+                    statusEl.classList.add('error');
+                } else {
+                    statusEl.classList.remove('error');
+                }
+            } catch (error) {
+                statusEl.textContent = '❌ Cannot run tests: Prism or FSH language definition not loaded';
+                statusEl.classList.add('error');
+                console.error('Error running tests:', error);
+            }
+        }
+    </script>
+</body>
+</html>
