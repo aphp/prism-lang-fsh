@@ -64,10 +64,10 @@ npm install prism-lang-fsh
 
 ```html
 <!-- Include Prism.js core -->
-<script src="https://unpkg.com/prismjs@latest/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
 
 <!-- Include the language definition -->
-<script src="https://unpkg.com/prism-lang-fsh@latest/dist/prism-lang-fsh.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prism-lang-fsh@0.1.0/prism-lang-fsh.min.js"></script>
 ```
 
 ### Manual Installation
@@ -84,9 +84,9 @@ npm install prism-lang-fsh
 <html>
 <head>
     <!-- Include Prism CSS -->
-    <link href="https://unpkg.com/prismjs@latest/themes/prism-tomorrow.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-min.css" rel="stylesheet" />
     <!-- Include FSH theme (optional) -->
-    <link href="https://unpkg.com/prism-lang-fsh@latest/dist/prism-lang-fsh.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/prism-lang-fsh@0.1.0/prism-lang-fsh.min.css" rel="stylesheet" />
 </head>
 <body>
     <pre><code class="language-fsh">
@@ -104,9 +104,9 @@ Description: "A custom patient profile with additional constraints"
 </code></pre>
 
     <!-- Include Prism core -->
-    <script src="https://unpkg.com/prismjs@latest/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
     <!-- Include FSH language definition -->
-    <script src="https://unpkg.com/prism-lang-fsh@latest/dist/prism-lang-fsh.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prism-lang-fsh@0.1.0/prism-lang-fsh.min.js"></script>
 
     <script>
         // Highlight all code blocks
