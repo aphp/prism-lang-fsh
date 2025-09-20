@@ -80,27 +80,27 @@
    ========================================================================== */
 
 /* Definition Keywords - Use FHIR primary color for prominence */
-.token.definition-keyword,
-.token.keyword.important {
+pre.language-fsh .token.definition-keyword,
+pre.language-fsh .token.keyword.important {
   color: var(--fsh-definition);
   font-weight: bold;
 }
 
 /* Metadata Keywords - Standard keyword styling */
-.token.metadata-keyword {
+pre.language-fsh .token.metadata-keyword {
   color: var(--fsh-metadata);
   font-weight: bold;
 }
 
 /* Action Keywords - Subtle keyword styling */
-.token.action-keyword {
+pre.language-fsh .token.action-keyword {
   color: var(--fsh-metadata);
   font-weight: normal;
 }
 
 /* Modifiers and Flags - Warning color with background */
-.token.modifier,
-.token.important {
+pre.language-fsh .token.modifier,
+pre.language-fsh .token.important {
   color: var(--fsh-modifier);
   font-weight: bold;
   background: var(--code-background);
@@ -110,14 +110,14 @@
 }
 
 /* Cardinalities - Success color for constraints */
-.token.cardinality {
+pre.language-fsh .token.cardinality {
   color: var(--fsh-cardinality);
   font-weight: bold;
 }
 
 /* Code References - Function color with inline styling */
-.token.code,
-.token.symbol {
+pre.language-fsh .token.code,
+pre.language-fsh .token.symbol {
   color: var(--fsh-code);
   background: var(--code-background);
   padding: var(--code-padding);
@@ -129,48 +129,48 @@
 }
 
 /* Code system part in code references */
-.token.code .token.code-system {
+pre.language-fsh .token.code .token.code-system {
   color: var(--prism-keyword);
   font-weight: bold;
 }
 
 /* Code value part */
-.token.code .token.code-value {
+pre.language-fsh .token.code .token.code-value {
   color: var(--fsh-code);
 }
 
 /* Alias Variables - Keyword color, bold */
-.token.variable {
+pre.language-fsh .token.variable {
   color: var(--fsh-variable);
   font-weight: bold;
 }
 
 /* Alias definitions */
-.token.alias .token.keyword {
+pre.language-fsh .token.alias .token.keyword {
   color: var(--fsh-definition);
   font-weight: bold;
 }
 
-.token.alias .token.variable {
+pre.language-fsh .token.alias .token.variable {
   color: var(--fsh-variable);
   font-weight: bold;
 }
 
 /* Rule Paths - Text color for readability */
-.token.rule-path {
+pre.language-fsh .token.rule-path {
   color: var(--fsh-path);
 }
 
-.token.rule-path .token.rule-indicator {
+pre.language-fsh .token.rule-path .token.rule-indicator {
   color: var(--fsh-modifier);
   font-weight: bold;
 }
 
-.token.rule-path .token.path-component {
+pre.language-fsh .token.rule-path .token.path-component {
   color: var(--fsh-path);
 }
 
-.token.rule-path .token.slice-name {
+pre.language-fsh .token.rule-path .token.slice-name {
   color: var(--fsh-code);
   background: var(--code-background);
   border-radius: var(--code-radius);
@@ -178,24 +178,25 @@
 }
 
 /* Caret Rules - Metadata rules */
-.token.caret-rule .token.caret {
+pre.language-fsh .token.caret-rule .token.caret {
   color: var(--fsh-modifier);
   font-weight: bold;
+  border-top-color: transparent;
 }
 
-.token.caret-rule .token.path-component {
+pre.language-fsh .token.caret-rule .token.path-component {
   color: var(--fsh-metadata);
 }
 
 /* Binding Strengths - Emphasize with italic */
-.token.binding-strength .token.keyword {
+pre.language-fsh .token.binding-strength .token.keyword {
   color: var(--fsh-definition);
   font-style: italic;
   font-weight: bold;
 }
 
 /* Multi-line strings - Special highlighting */
-.token.multiline-string {
+pre.language-fsh .token.multiline-string {
   color: var(--prism-string);
   background: var(--code-background);
   border-left: 3px solid var(--prism-string);
@@ -205,47 +206,47 @@
 }
 
 /* URLs - Link styling */
-.token.url,
-.token.link {
+pre.language-fsh .token.url,
+pre.language-fsh .token.link {
   color: var(--fsh-url);
   text-decoration: underline;
 }
 
 /* Standard Prism tokens aligned with IG */
-.token.comment {
+pre.language-fsh .token.comment {
   color: var(--prism-comment);
   font-style: italic;
 }
 
-.token.string {
+pre.language-fsh .token.string {
   color: var(--prism-string);
 }
 
-.token.number {
+pre.language-fsh .token.number {
   color: var(--prism-number);
 }
 
-.token.date {
+pre.language-fsh .token.date {
   color: var(--prism-string);
   background: var(--code-background);
   border-radius: var(--code-radius);
   padding: var(--code-padding);
 }
 
-.token.boolean {
+pre.language-fsh .token.boolean {
   color: var(--prism-number);
   font-weight: bold;
 }
 
-.token.operator {
+pre.language-fsh .token.operator {
   color: var(--prism-operator);
 }
 
-.token.punctuation {
+pre.language-fsh .token.punctuation {
   color: var(--prism-punctuation);
 }
 
-.token.identifier {
+pre.language-fsh .token.identifier {
   color: var(--prism-text);
 }
 
@@ -256,7 +257,6 @@
 /* Inline FSH code blocks (matching FHIRPath style) */
 code.language-fsh {
   background: var(--code-background);
-  border: 1px solid var(--code-border);
   padding: var(--code-padding);
   font-size: 1em;
   display: inline-block;
@@ -266,7 +266,6 @@ code.language-fsh {
 /* FSH code blocks */
 pre.language-fsh {
   background: var(--code-background);
-  border: 1px solid var(--code-border);
   text-shadow: none;
   white-space: pre-wrap;
   font-family: var(--font-family-mono);
@@ -294,14 +293,14 @@ pre[class*="language-"] {
     --code-border: #000000;
   }
 
-  .token.modifier,
-  .token.important {
+  pre.language-fsh .token.modifier,
+  pre.language-fsh .token.important {
     background: #fff2cc;
     border-color: #000000;
   }
 
-  .token.code,
-  .token.symbol {
+  pre.language-fsh .token.code,
+  pre.language-fsh .token.symbol {
     background: #f0f0f0;
     border-color: #000000;
   }
@@ -320,23 +319,23 @@ pre[class*="language-"] {
     --code-border: #cccccc;
   }
 
-  .token.definition-keyword,
-  .token.keyword.important,
-  .token.metadata-keyword {
+  pre.language-fsh .token.definition-keyword,
+  pre.language-fsh .token.keyword.important,
+  pre.language-fsh .token.metadata-keyword {
     color: #000000;
     font-weight: bold;
   }
 
-  .token.modifier,
-  .token.important,
-  .token.code,
-  .token.symbol {
+  pre.language-fsh .token.modifier,
+  pre.language-fsh .token.important,
+  pre.language-fsh .token.code,
+  pre.language-fsh .token.symbol {
     background: #f0f0f0;
     border: 1px solid #cccccc;
   }
 
-  .token.url,
-  .token.link {
+  pre.language-fsh .token.url,
+  pre.language-fsh .token.link {
     text-decoration: underline;
     color: #000000;
   }
@@ -347,17 +346,17 @@ pre[class*="language-"] {
    ========================================================================== */
 
 /* Ensure efficient rendering */
-.token {
+pre.language-fsh .token {
   display: inline;
 }
 
 /* Remove any expensive visual effects for better performance */
-.token:not(.string):not(.comment) {
+pre.language-fsh .token:not(.string):not(.comment) {
   text-shadow: none;
 }
 
 /* Maintain focus indicators for accessibility */
-pre[class*="language-"]:focus {
+/*pre[class*="language-"]:focus {
   outline: 2px solid var(--fhir-primary);
   outline-offset: 2px;
-}
+}*/
