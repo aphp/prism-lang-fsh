@@ -19,7 +19,7 @@ FHIR Shorthand is a domain-specific language designed for creating and maintaini
 
 > **Version**: FSH v3.0.0
 > **FHIR Version**: R4 (4.0.1) and R5 (5.0.0)
-> **Plugin Version**: 1.0.0
+> **Plugin Version**: 0.1.0
 
 ## Language Features
 

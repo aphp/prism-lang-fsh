@@ -5,162 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FSH Syntax Highlighting - FHIR IG Integration Demo</title>
 
-    <!-- Include Prism CSS (IG Standard) -->
+    <!-- Include Prism CSS -->
     <link href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.min.css" rel="stylesheet" />
 
     <!-- Include FSH FHIR IG styles -->
     <link href="../src/prism-lang-fsh.css" rel="stylesheet" />
 
     <style>
-        /* FHIR IG-style Layout */
         body {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-size: 14px;
-            line-height: 1.428571429;
-            color: #333333;
-            background-color: #fff;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 1200px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
-            background: #505050;
-            color: #e6e6e6;
-            padding: 10px 0;
-            margin-bottom: 30px;
-        }
-
-        .header h1 {
-            margin: 0;
-            padding: 0 20px;
-            font-size: 24px;
-            font-weight: 500;
-        }
-
-        .ig-section {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .section-header {
+            padding: 40px 20px;
             background: #f5f5f5;
-            border-bottom: 1px solid #ddd;
-            padding: 10px 15px;
-            font-weight: bold;
-            color: #da0c23;
         }
-
-        .section-content {
-            padding: 15px;
+        
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #007acc;
+            padding-bottom: 10px;
         }
-
+        
+        .demo-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #555;
+            margin-top: 0;
+        }
+        
         .description {
             color: #666;
-            margin-bottom: 15px;
-            font-size: 13px;
+            margin-bottom: 20px;
         }
-
-        /* Theme switcher */
-        .theme-controls {
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
+        
+        pre[class*="language-"] {
+            margin: 0;
             border-radius: 4px;
+        }
+        
+        .installation {
+            background: #e8f4fd;
+            border-left: 4px solid #007acc;
             padding: 15px;
             margin-bottom: 20px;
         }
-
-        .theme-controls label {
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .theme-controls select {
-            padding: 5px 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        /* Inline code examples */
-        .inline-example {
-            background: #f8f9fa;
-            border-left: 4px solid #da0c23;
-            padding: 10px 15px;
-            margin: 10px 0;
-        }
-
-        /* STU Note styling (FHIR IG standard) */
-        .stu-note {
-            background: #fff2ff;
-            border-left: 4px solid #ffa0ff;
-            padding: 10px 15px;
-            margin: 15px 0;
-            font-style: italic;
-        }
-
-        .stu-note strong {
-            color: #da0c23;
-            font-weight: bold;
-        }
-
-        /* Footer */
-        .footer {
-            background: #707070;
-            color: #e6e6e6;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 12px;
+        
+        .installation code {
+            background: white;
+            padding: 2px 6px;
+            border-radius: 3px;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>FHIR Shorthand (FSH) Syntax Highlighting</h1>
+    <h1>FHIR Shorthand (FSH) Syntax Highlighting</h1>
+    
+    <div class="demo-section">
+        <h2>FHIR IG Integration</h2>
+        <p class="description">
+            This demo showcases FML syntax highlighting with colors and styles specifically designed
+            to integrate with FHIR Implementation Guide environments. The color scheme follows
+            HL7's visual identity guidelines while providing clear, distinctive highlighting for
+            all FML language constructs.
+        </p>
+        <div class="installation">
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li>✅ FHIR IG compliant color scheme</li>
+                <li>✅ Dark theme support with <code>prefers-color-scheme</code></li>
+                <li>✅ Print-friendly high contrast styling</li>
+                <li>✅ Accessibility compliant (WCAG 2.1 AA)</li>
+                <li>✅ Bootstrap integration for FHIR IGs</li>
+            </ul>
+        </div>
     </div>
 
-    <div class="container">
-        <div class="theme-controls">
-            <label for="theme-selector">Theme:</label>
-            <select id="theme-selector">
-                <option value="">FHIR IG Default</option>
-                <option value="dark">Dark Mode</option>
-                <option value="high-contrast">High Contrast</option>
-            </select>
+    <div class="demo-section">
+        <h2>Installation</h2>
+        <div class="installation">
+            <p>Include the following in your HTML:</p>
+            <code>&lt;link href="path/to/prism.css" rel="stylesheet"&gt;</code><br>
+            <code>&lt;link href="path/to/prism-lang-fsh.css" rel="stylesheet"&gt;</code><br>
+            <code>&lt;script src="path/to/prism.js"&gt;&lt;/script&gt;</code><br>
+            <code>&lt;script src="path/to/prism-lang-fsh.js"&gt;&lt;/script&gt;</code>
         </div>
+    </div>
 
-        <div class="stu-note">
-            <strong>Note:</strong> This page demonstrates FSH syntax highlighting integration with FHIR Implementation Guide styling standards. The color scheme and typography align with HL7 brand guidelines.
-        </div>
-
-        <!-- Inline Code Examples -->
-        <div class="ig-section">
-            <div class="section-header">Inline FSH Examples</div>
-            <div class="section-content">
-                <p class="description">FSH code can be embedded inline within narrative text, similar to FHIRPath expressions.</p>
-
-                <div class="inline-example">
-                    <p>Define a profile using <code class="language-fsh">Profile: MyProfile</code> and set the parent with <code class="language-fsh">Parent: Patient</code>.</p>
-                    <p>Add constraints like <code class="language-fsh">* identifier 1..* MS</code> and codes such as <code class="language-fsh">SCT#123456 "Hypertension"</code>.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Basic FSH Examples -->
-        <div class="ig-section">
-            <div class="section-header">FSH Profile Definition</div>
-            <div class="section-content">
-                <p class="description">A complete FSH profile definition with metadata, constraints, and extensions.</p>
-
-<pre><code class="language-fsh">// Enhanced Patient Profile for US Core
+    <div class="demo-section">
+        <h2>FSH Profile Definition</h2>
+        <p class="description">
+            A complete FSH profile definition with metadata, constraints, and extensions.
+        </p>
+        <pre><code class="language-fsh">// Enhanced Patient Profile for US Core
 Alias: $sct = http://snomed.info/sct
 Alias: $loinc = http://loinc.org
 
@@ -191,16 +134,13 @@ constraints for Patient resources used in US implementations.
 * extension contains
     USCoreRace named race 0..1 MS and
     USCoreEthnicity named ethnicity 0..1 MS</code></pre>
-            </div>
-        </div>
-
-        <!-- ValueSet Example -->
-        <div class="ig-section">
-            <div class="section-header">FSH ValueSet Definition</div>
-            <div class="section-content">
-                <p class="description">ValueSet definitions with includes, excludes, and terminology bindings.</p>
-
-<pre><code class="language-fsh">ValueSet: ObservationCategoryCodes
+    </div>
+    <div class="demo-section">
+        <h2>FSH ValueSet Definition</h2>
+        <p class="description">
+            ValueSet definitions with includes, excludes, and terminology bindings.
+        </p>
+        <pre><code class="language-fsh">ValueSet: ObservationCategoryCodes
 Id: observation-category
 Title: "Observation Category Codes"
 Description: "Codes for categorizing observations"
@@ -211,16 +151,15 @@ Description: "Codes for categorizing observations"
 
 // Binding example in profile
 * category from ObservationCategoryCodes (extensible)</code></pre>
-            </div>
-        </div>
+    </div>
 
-        <!-- Advanced Features -->
-        <div class="ig-section">
-            <div class="section-header">Advanced FSH Features</div>
-            <div class="section-content">
-                <p class="description">Complex FSH constructs including slicing, invariants, and RuleSets.</p>
-
-<pre><code class="language-fsh">// Address slicing with discriminator
+    <!-- Advanced Features -->
+    <div class="demo-section">
+        <h2>Advanced FSH Features</h2>
+        <p class="description">
+            Complex FSH constructs including slicing, invariants, and RuleSets.
+        </p>
+        <pre><code class="language-fsh">// Address slicing with discriminator
 * address ^slicing.discriminator.type = #pattern
 * address ^slicing.discriminator.path = "use"
 * address ^slicing.rules = #open
@@ -247,17 +186,14 @@ RuleSet: CommonMetadata
 // Using the RuleSet
 Profile: AnotherProfile
 Parent: Observation
-* insert CommonMetadata</code></pre>
-            </div>
-        </div>
-
-        <!-- Extension Definition -->
-        <div class="ig-section">
-            <div class="section-header">FSH Extension Definition</div>
-            <div class="section-content">
-                <p class="description">Defining and using extensions in FSH.</p>
-
-<pre><code class="language-fsh">Extension: BirthPlace
+* insert CommonMetadata</code></pre>    
+    </div>
+    <div class="demo-section">
+        <h2>FSH Extension Definition</h2>
+        <p class="description">
+            Defining and using extensions in FSH.
+        </p>
+        <pre><code class="language-fsh">Extension: BirthPlace
 Id: birthplace
 Title: "Birth Place"
 Description: "The location where the patient was born"
@@ -270,16 +206,16 @@ Context: Patient
 // Using the extension
 * extension contains BirthPlace named birthPlace 0..1 MS
 * extension[birthPlace].valueAddress.city 1..1</code></pre>
-            </div>
-        </div>
+    </div>
+    
 
-        <!-- Mapping Example -->
-        <div class="ig-section">
-            <div class="section-header">FSH Mapping Definition</div>
-            <div class="section-content">
-                <p class="description">Mapping FSH profiles to external standards.</p>
-
-<pre><code class="language-fsh">Mapping: PatientToV2
+    <!-- Mapping Example -->
+     <div class="demo-section">
+        <h2>FSH Mapping Definition</h2>
+        <p class="description">
+            Mapping FSH profiles to external standards.
+        </p>
+        <pre><code class="language-fsh">Mapping: PatientToV2
 Id: patient-to-v2
 Title: "Patient to HL7 v2 Mapping"
 Source: USCorePatientProfile
@@ -290,42 +226,18 @@ Target: "HL7 v2 PID"
 * name.given -> "PID.5.2"
 * birthDate -> "PID.7"
 * gender -> "PID.8"</code></pre>
-            </div>
-        </div>
-
     </div>
 
-    <div class="footer">
-        <p>FHIR Shorthand (FSH) Syntax Highlighting | Integrated with FHIR IG Standards</p>
-        <p>Powered by Prism.js | Styled for HL7 Implementation Guides</p>
-    </div>
-
-    <!-- Load Prism.js -->
+    <!-- Load Prism.js core -->
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
-
-    <!-- Load FSH language definition -->
+    
+    <!-- Load the fml language definition -->
+    <!-- In production, this would be your minified plugin file -->
     <script src="../src/prism-lang-fsh.js"></script>
-
+    
     <script>
-        // Theme switcher functionality
-        document.getElementById('theme-selector').addEventListener('change', function(e) {
-            const theme = e.target.value;
-            const body = document.body;
-
-            // Remove existing theme classes
-            body.classList.remove('dark', 'high-contrast');
-
-            // Add new theme class
-            if (theme) {
-                body.classList.add(theme);
-                body.setAttribute('data-theme', theme);
-            } else {
-                body.removeAttribute('data-theme');
-            }
-        });
-
-        // Highlight all code blocks on load
-        window.addEventListener('load', function() {
+        // Ensure everything is highlighted on load
+        document.addEventListener('DOMContentLoaded', () => {
             Prism.highlightAll();
         });
     </script>

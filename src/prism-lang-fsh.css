@@ -1,362 +1,387 @@
 /*!
- * Prism Language FSH - FHIR IG Compatible Theme
- * FHIR Shorthand syntax highlighting theme for Prism.js
- * Optimized for integration with FHIR Implementation Guide templates
+ * Prism.js FSH (FHIR Shorthand) Theme
+ * Compatible with FHIR Implementation Guide styling
  * @version 0.1.0
  * @author AP-HP Development Team
  * @license MIT
  */
 
-/* ==========================================================================
-   CSS Custom Properties - FHIR IG Color Palette
-   ========================================================================== */
+/* Base styling for FSH code blocks */
+/*code[class*="language-fsh"],
+pre[class*="language-fsh"] {
+  color: #000;
+  background: #f5f2f0;
+  text-shadow: 0 1px white;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  tab-size: 4;
+  hyphens: none;
+}*/
 
-:root {
-  /* FHIR IG Brand Colors */
-  --fhir-primary: #da0c23;
-  --fhir-secondary: #505050;
-  --fhir-muted: #999999;
-  --fhir-text: #333333;
+/* Code blocks */
+/*pre[class*="language-fsh"]::-moz-selection,
+pre[class*="language-fsh"] ::-moz-selection,
+code[class*="language-fsh"]::-moz-selection,
+code[class*="language-fsh"] ::-moz-selection {
+  text-shadow: none;
+  background: #b3d4fc;
+}*/
 
-  /* FHIR Status Colors */
-  --fhir-success: #5cb85c;
-  --fhir-warning: #f0ad4e;
-  --fhir-danger: #d9534f;
-  --fhir-info: #5bc0de;
+/*pre[class*="language-fsh"]::selection,
+pre[class*="language-fsh"] ::selection,
+code[class*="language-fsh"]::selection,
+code[class*="language-fsh"] ::selection {
+  text-shadow: none;
+  background: #b3d4fc;
+}*/
 
-  /* Prism IG Standard Token Colors */
-  --prism-background: #f5f2f0;
-  --prism-text: #000000;
-  --prism-comment: slategray;
-  --prism-keyword: #07a;
-  --prism-string: #690;
-  --prism-function: #DD4A68;
-  --prism-number: #905;
-  --prism-operator: #9a6e3a;
-  --prism-punctuation: #999999;
+/* Pre-formatted blocks */
+/*pre[class*="language-fsh"] {
+  padding: 9.5px;
+  margin: 0.5em 0;
+  overflow: auto;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background: #f5f2f0;
+}*/
 
-  /* FSH-specific Token Colors (aligned with FHIR concepts) */
-  --fsh-definition: var(--fhir-primary);
-  --fsh-metadata: var(--prism-keyword);
-  --fsh-cardinality: var(--fhir-success);
-  --fsh-modifier: var(--fhir-warning);
-  --fsh-code: var(--prism-function);
-  --fsh-variable: var(--prism-keyword);
-  --fsh-path: var(--fhir-text);
-  --fsh-url: var(--prism-keyword);
-
-  /* Code Block Styling */
-  --code-background: #eee;
-  --code-border: #cccccc;
-  --code-padding: 1px 4px;
-  --code-radius: 4px;
-
-  /* Typography */
-  --font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-family-mono: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-  --font-size-base: 14px;
-  --line-height-base: 1.428571429;
-  --line-height-code: 1.5;
+pre[class*="language-fsh"] {
+    background-color: #eee;
+    text-shadow: unset;
 }
 
-/* Dark theme overrides */
-[data-theme="dark"], .dark {
-  --fhir-text: #f0f6fc;
-  --fhir-muted: #8b949e;
-  --prism-background: #0d1117;
-  --prism-text: #f0f6fc;
-  --prism-comment: #8b949e;
-  --prism-keyword: #79c0ff;
-  --prism-string: #a5d6ff;
-  --prism-function: #ff7b72;
-  --prism-number: #79c0ff;
-  --prism-operator: #ff7b72;
-  --code-background: rgba(110, 118, 129, 0.2);
-  --code-border: #30363d;
+pre[class*="language-fsh"] code[class*="language-fsh"] {
+    white-space: pre-wrap;
+    text-shadow: unset;
 }
 
-/* ==========================================================================
-   FHIR Shorthand (FSH) Token Styling
-   ========================================================================== */
+/* Inline code */
+:not(pre) > code[class*="language-fsh"] {
+  background-color: #eee;
+  padding: 0.1em 0.3em;
+  border: 1px solid #cccccc;
+  border-radius: 0.3em;
+  font-size: 1em;
+  display: inline-block;
+  margin: 2px 0;
+  text-shadow: unset;
+  white-space: normal;
+}
 
-/* Definition Keywords - Use FHIR primary color for prominence */
-pre.language-fsh .token.definition-keyword,
-pre.language-fsh .token.keyword.important {
-  color: var(--fsh-definition);
+/* Token styling */
+
+/* Comments - slate gray for excellent readability */
+pre[class*="language-fsh"] .token.comment,
+pre[class*="language-fsh"] .token.prolog,
+pre[class*="language-fsh"] .token.doctype,
+pre[class*="language-fsh"] .token.cdata {
+  color: slategray;
+  font-style: italic;
+}
+
+/* Definition keywords - bold blue for high prominence */
+pre[class*="language-fsh"] .token.definition-keyword {
+  color: #07a;
   font-weight: bold;
 }
 
-/* Metadata Keywords - Standard keyword styling */
-pre.language-fsh .token.metadata-keyword {
-  color: var(--fsh-metadata);
-  font-weight: bold;
+/* Metadata keywords - blue for consistency */
+pre[class*="language-fsh"] .token.metadata-keyword,
+pre[class*="language-fsh"] .token.keyword {
+  color: #07a;
 }
 
-/* Action Keywords - Subtle keyword styling */
-pre.language-fsh .token.action-keyword {
-  color: var(--fsh-metadata);
+/* Action keywords - blue for language constructs */
+pre[class*="language-fsh"] .token.action-keyword {
+  color: #07a;
+}
+
+/* String literals - green from Prism default */
+pre[class*="language-fsh"] .token.string,
+pre[class*="language-fsh"] .token.multiline-string {
+  color: #690;
+}
+
+/* Code references and numbers - burgundy for structured data */
+pre[class*="language-fsh"] .token.code,
+pre[class*="language-fsh"] .token.number,
+pre[class*="language-fsh"] .token.cardinality {
+  color: #905;
   font-weight: normal;
 }
 
-/* Modifiers and Flags - Warning color with background */
-pre.language-fsh .token.modifier,
-pre.language-fsh .token.important {
-  color: var(--fsh-modifier);
-  font-weight: bold;
-  background: var(--code-background);
-  padding: var(--code-padding);
-  border-radius: var(--code-radius);
-  border: 1px solid var(--code-border);
+/* Alias references - orange for variable-like references */
+pre[class*="language-fsh"] .token.alias,
+pre[class*="language-fsh"] .token.variable {
+  color: #e90;
 }
 
-/* Cardinalities - Success color for constraints */
-pre.language-fsh .token.cardinality {
-  color: var(--fsh-cardinality);
-  font-weight: bold;
+/* URLs - Bootstrap primary blue for links */
+pre[class*="language-fsh"] .token.url,
+pre[class*="language-fsh"] .token.link {
+  color: #428bca;
+  text-decoration: none;
 }
 
-/* Code References - Function color with inline styling */
-pre.language-fsh .token.code,
-pre.language-fsh .token.symbol {
-  color: var(--fsh-code);
-  background: var(--code-background);
-  padding: var(--code-padding);
-  border-radius: var(--code-radius);
-  border: 1px solid var(--code-border);
-  font-family: var(--font-family-mono);
-  font-size: 1em;
-  display: inline-block;
-}
-
-/* Code system part in code references */
-pre.language-fsh .token.code .token.code-system {
-  color: var(--prism-keyword);
-  font-weight: bold;
-}
-
-/* Code value part */
-pre.language-fsh .token.code .token.code-value {
-  color: var(--fsh-code);
-}
-
-/* Alias Variables - Keyword color, bold */
-pre.language-fsh .token.variable {
-  color: var(--fsh-variable);
-  font-weight: bold;
-}
-
-/* Alias definitions */
-pre.language-fsh .token.alias .token.keyword {
-  color: var(--fsh-definition);
-  font-weight: bold;
-}
-
-pre.language-fsh .token.alias .token.variable {
-  color: var(--fsh-variable);
-  font-weight: bold;
-}
-
-/* Rule Paths - Text color for readability */
-pre.language-fsh .token.rule-path {
-  color: var(--fsh-path);
-}
-
-pre.language-fsh .token.rule-path .token.rule-indicator {
-  color: var(--fsh-modifier);
-  font-weight: bold;
-}
-
-pre.language-fsh .token.rule-path .token.path-component {
-  color: var(--fsh-path);
-}
-
-pre.language-fsh .token.rule-path .token.slice-name {
-  color: var(--fsh-code);
-  background: var(--code-background);
-  border-radius: var(--code-radius);
-  padding: 1px 3px;
-}
-
-/* Caret Rules - Metadata rules */
-pre.language-fsh .token.caret-rule .token.caret {
-  color: var(--fsh-modifier);
-  font-weight: bold;
-  border-top-color: transparent;
-}
-
-pre.language-fsh .token.caret-rule .token.path-component {
-  color: var(--fsh-metadata);
-}
-
-/* Binding Strengths - Emphasize with italic */
-pre.language-fsh .token.binding-strength .token.keyword {
-  color: var(--fsh-definition);
-  font-style: italic;
-  font-weight: bold;
-}
-
-/* Multi-line strings - Special highlighting */
-pre.language-fsh .token.multiline-string {
-  color: var(--prism-string);
-  background: var(--code-background);
-  border-left: 3px solid var(--prism-string);
-  padding-left: 0.5em;
-  font-style: italic;
-  white-space: pre-wrap;
-}
-
-/* URLs - Link styling */
-pre.language-fsh .token.url,
-pre.language-fsh .token.link {
-  color: var(--fsh-url);
+pre[class*="language-fsh"] .token.url:hover,
+pre[class*="language-fsh"] .token.link:hover {
   text-decoration: underline;
 }
 
-/* Standard Prism tokens aligned with IG */
-pre.language-fsh .token.comment {
-  color: var(--prism-comment);
-  font-style: italic;
-}
-
-pre.language-fsh .token.string {
-  color: var(--prism-string);
-}
-
-pre.language-fsh .token.number {
-  color: var(--prism-number);
-}
-
-pre.language-fsh .token.date {
-  color: var(--prism-string);
-  background: var(--code-background);
-  border-radius: var(--code-radius);
-  padding: var(--code-padding);
-}
-
-pre.language-fsh .token.boolean {
-  color: var(--prism-number);
+/* Flags and modifiers - pink with bold for high visibility */
+pre[class*="language-fsh"] .token.modifier,
+pre[class*="language-fsh"] .token.important {
+  color: #DD4A68;
   font-weight: bold;
 }
 
-pre.language-fsh .token.operator {
-  color: var(--prism-operator);
+/* Operators and rule indicators - brown from Prism */
+pre[class*="language-fsh"] .token.operator,
+pre[class*="language-fsh"] .token.rule-indicator {
+  color: #9a6e3a;
+  font-weight: bold;
+  background: unset;
 }
 
-pre.language-fsh .token.punctuation {
-  color: var(--prism-punctuation);
+/* Punctuation - subtle gray */
+pre[class*="language-fsh"] .token.punctuation {
+  color: #999;
 }
 
-pre.language-fsh .token.identifier {
-  color: var(--prism-text);
+/* Boolean values */
+pre[class*="language-fsh"] .token.boolean {
+  color: #905;
 }
 
-/* ==========================================================================
-   FHIR IG Integration Styles
-   ========================================================================== */
-
-/* Inline FSH code blocks (matching FHIRPath style) */
-code.language-fsh {
-  background: var(--code-background);
-  padding: var(--code-padding);
-  font-size: 1em;
-  display: inline-block;
-  text-shadow: none;
+/* Binding strength styling */
+pre[class*="language-fsh"] .token.binding-strength .keyword {
+  color: #07a;
 }
 
-/* FSH code blocks */
-pre.language-fsh {
-  background: var(--code-background);
-  text-shadow: none;
-  white-space: pre-wrap;
-  font-family: var(--font-family-mono);
-  line-height: var(--line-height-code);
+pre[class*="language-fsh"] .token.binding-strength .punctuation {
+  color: #999;
 }
 
-/* Remove custom styling that might conflict with IG themes */
-pre[class*="language-"] {
-  font-family: var(--font-family-mono);
-  line-height: var(--line-height-code);
+/* Path components and identifiers */
+pre[class*="language-fsh"] .token.path-component,
+pre[class*="language-fsh"] .token.identifier {
+  color: #000;
 }
 
-/* ==========================================================================
-   High Contrast and Accessibility Support
-   ========================================================================== */
+/* Slice names in brackets */
+pre[class*="language-fsh"] .token.slice-name {
+  color: #905;
+  font-weight: normal;
+}
 
-@media (prefers-contrast: high) {
-  :root {
-    --fsh-definition: #a80000;
-    --fsh-metadata: #5a1a6b;
-    --fsh-modifier: #b8490a;
-    --fsh-code: #5a1a6b;
-    --fsh-variable: #003d82;
-    --code-background: #ffffff;
-    --code-border: #000000;
+/* Caret symbol for metadata rules */
+pre[class*="language-fsh"] .token.caret {
+  color: #9a6e3a;
+  font-weight: bold;
+}
+
+/* Special styling for nested contexts */
+pre[class*="language-fsh"] .token.alias .token.keyword {
+  color: #07a;
+}
+
+pre[class*="language-fsh"] .token.alias .token.variable {
+  color: #e90;
+  font-weight: bold;
+}
+
+pre[class*="language-fsh"] .token.alias .token.operator {
+  color: #9a6e3a;
+}
+
+pre[class*="language-fsh"] .token.alias .token.url {
+  color: #428bca;
+}
+
+/* Rule path components */
+pre[class*="language-fsh"] .token.rule-path .token.rule-indicator {
+  color: #9a6e3a;
+  font-weight: bold;
+}
+
+pre[class*="language-fsh"] .token.rule-path .token.path-component {
+  color: #000;
+}
+
+pre[class*="language-fsh"] .token.rule-path .token.punctuation {
+  color: #999;
+}
+
+pre[class*="language-fsh"] .token.rule-path .token.slice-name {
+  color: #905;
+}
+
+/* Caret rule components */
+pre[class*="language-fsh"] .token.caret-rule .token.rule-indicator {
+  color: #9a6e3a;
+  font-weight: bold;
+}
+
+pre[class*="language-fsh"] .token.caret-rule .token.caret {
+  color: #9a6e3a;
+  font-weight: bold;
+}
+
+pre[class*="language-fsh"] .token.caret-rule .token.path-component {
+  color: #000;
+}
+
+pre[class*="language-fsh"] .token.caret-rule .token.punctuation {
+  color: #999;
+}
+
+/* Date/time literals */
+pre[class*="language-fsh"] .token.date {
+  color: #690;
+}
+
+/* Code system references with internal structure */
+pre[class*="language-fsh"] .token.code .token.code-system {
+  color: #905;
+  font-weight: bold;
+}
+
+pre[class*="language-fsh"] .token.code .token.operator {
+  color: #9a6e3a;
+}
+
+pre[class*="language-fsh"] .token.code .token.code-value {
+  color: #905;
+}
+
+/* High contrast mode support */
+/*@media (prefers-contrast: high) {
+  code[class*="language-fsh"],
+  pre[class*="language-fsh"] {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  pre.language-fsh .token.comment {
+    color: #404040;
+  }
+
+  pre.language-fsh .token.string {
+    color: #006400;
+  }
+
+  pre.language-fsh .token.keyword,
+  pre.language-fsh .token.definition-keyword,
+  pre.language-fsh .token.metadata-keyword,
+  pre.language-fsh .token.action-keyword {
+    color: #0000ff;
   }
 
   pre.language-fsh .token.modifier,
   pre.language-fsh .token.important {
-    background: #fff2cc;
-    border-color: #000000;
+    color: #ff0000;
+  }
+}*/
+
+/* Print styles */
+/*@media print {
+  code[class*="language-fsh"],
+  pre[class*="language-fsh"] {
+    background: transparent;
+    color: #000;
+    text-shadow: none;
   }
 
-  pre.language-fsh .token.code,
-  pre.language-fsh .token.symbol {
-    background: #f0f0f0;
-    border-color: #000000;
-  }
-}
-
-/* ==========================================================================
-   Print Styles
-   ========================================================================== */
-
-@media print {
-  :root {
-    --fhir-text: #000000;
-    --prism-text: #000000;
-    --prism-comment: #666666;
-    --code-background: #f0f0f0;
-    --code-border: #cccccc;
+  pre.language-fsh .token.comment {
+    color: #666;
   }
 
+  pre.language-fsh .token.string {
+    color: #000;
+  }
+
+  pre.language-fsh .token.keyword,
   pre.language-fsh .token.definition-keyword,
-  pre.language-fsh .token.keyword.important,
   pre.language-fsh .token.metadata-keyword {
-    color: #000000;
+    color: #000;
     font-weight: bold;
   }
 
   pre.language-fsh .token.modifier,
-  pre.language-fsh .token.important,
-  pre.language-fsh .token.code,
-  pre.language-fsh .token.symbol {
-    background: #f0f0f0;
-    border: 1px solid #cccccc;
-  }
-
-  pre.language-fsh .token.url,
-  pre.language-fsh .token.link {
+  pre.language-fsh .token.important {
+    color: #000;
+    font-weight: bold;
     text-decoration: underline;
-    color: #000000;
   }
-}
+}*/
 
-/* ==========================================================================
-   Performance and Compatibility
-   ========================================================================== */
+/* Dark theme support (future) */
+/*@media (prefers-color-scheme: dark) {
+  code[class*="language-fsh"],
+  pre[class*="language-fsh"] {
+    background: #2d2d2d;
+    color: #f8f8f2;
+    text-shadow: none;
+  }
 
-/* Ensure efficient rendering */
-pre.language-fsh .token {
-  display: inline;
-}
+  pre[class*="language-fsh"] {
+    border-color: #444444;
+  }
 
-/* Remove any expensive visual effects for better performance */
-pre.language-fsh .token:not(.string):not(.comment) {
-  text-shadow: none;
-}
+  :not(pre) > code[class*="language-fsh"] {
+    background: #2d2d2d;
+    border-color: #444444;
+  }
 
-/* Maintain focus indicators for accessibility */
-/*pre[class*="language-"]:focus {
-  outline: 2px solid var(--fhir-primary);
-  outline-offset: 2px;
+  pre.language-fsh .token.comment {
+    color: #999999;
+  }
+
+  pre.language-fsh .token.string,
+  pre.language-fsh .token.multiline-string {
+    color: #98c379;
+  }
+
+  pre.language-fsh .token.keyword,
+  pre.language-fsh .token.definition-keyword,
+  pre.language-fsh .token.metadata-keyword,
+  pre.language-fsh .token.action-keyword {
+    color: #61afef;
+  }
+
+  pre.language-fsh .token.code,
+  pre.language-fsh .token.number,
+  pre.language-fsh .token.cardinality {
+    color: #d19a66;
+  }
+
+  pre.language-fsh .token.alias,
+  pre.language-fsh .token.variable {
+    color: #e06c75;
+  }
+
+  pre.language-fsh .token.url {
+    color: #56b6c2;
+  }
+
+  pre.language-fsh .token.modifier,
+  pre.language-fsh .token.important {
+    color: #c678dd;
+  }
+
+  pre.language-fsh .token.operator,
+  pre.language-fsh .token.rule-indicator {
+    color: #abb2bf;
+  }
+
+  pre.language-fsh .token.punctuation {
+    color: #5c6370;
+  }
 }*/

@@ -43,24 +43,6 @@ FHIR Implementation Guides use a standardized set of stylesheets maintained by H
   - Dark/light theme support
 </context>
 <requirement>
-### Color Palette Harmonization
-Extract and map colors from FHIR IG stylesheets to FSH tokens:
-
-```css
-/* FHIR IG Color Variables (to be extracted) */
-:root {
-  --fhir-primary: /* from bootstrap-fhir.css */;
-  --fhir-resource: /* from bootstrap-fhir.css */;
-  --fhir-datatype: /* from bootstrap-fhir.css */;
-  --fhir-modifier: /* from bootstrap-fhir.css */;
-  --hl7-blue: /* from hl7.css */;
-  --hl7-orange: /* from hl7.css */;
-  --code-background: /* from prism.css */;
-  --comment-color: /* from prism-fhirpath.css */;
-  --keyword-color: /* from prism-fhirpath.css */;
-  --string-color: /* from prism-fhirpath.css */;
-}
-```
 
 ### FSH Token Mapping Strategy
 
@@ -116,19 +98,7 @@ Map FSH language constructs to FHIR IG visual concepts:
 3. Note standard spacing units (likely based on Bootstrap grid)
 
 ### Step 4: Create Color Mapping
-Map FSH elements to appropriate FHIR IG colors:
-
-| FSH Element | FHIR IG Equivalent | Color Source |
-|-------------|-------------------|--------------|
-| Definition keywords | Resource definitions | bootstrap-fhir.css |
-| Metadata | Resource metadata | bootstrap-fhir.css |
-| Cardinalities | Constraints | bootstrap-fhir.css |
-| Modifiers (MS, SU) | Modifier elements | bootstrap-fhir.css |
-| Code references | Terminology | prism-fhirpath.css |
-| Paths | Element paths | prism-fhirpath.css |
-| Comments | Comments | prism-fhirpath.css |
-| Strings | String literals | prism-fhirpath.css |
-| URLs | Links | hl7.css |
+Map FSH elements to appropriate FHIR IG colors: docs\FSH-FHIR-IG-COLOR-MAPPING.md
 
 ### Step 5: Testing Scenarios
 Create test cases for:
@@ -201,10 +171,11 @@ The adapted `src\prism-lang-fsh.css` file will be considered complete when:
 1. ✓ All FSH tokens are properly styled
 2. ✓ Visual consistency with FHIR IG templates achieved
 3. ✓ No style conflicts with existing IG CSS
-4. ✓ Accessibility standards met (WCAG 2.1 AA)
-5. ✓ Cross-browser testing passed
-6. ✓ Performance benchmarks met (<10KB minified)
-7. ✓ Documentation complete and clear
-8. ✓ Integration tested in actual IG
+4. ✓ No style conflicts with existing PrismJs plugin
+5. ✓ Accessibility standards met (WCAG 2.1 AA)
+6. ✓ Cross-browser testing passed
+7. ✓ Performance benchmarks met (<10KB minified)
+8. ✓ Documentation complete and clear
+9. ✓ Integration tested in actual IG
 
 </output>

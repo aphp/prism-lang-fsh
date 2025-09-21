@@ -10,7 +10,7 @@ This project is optimized for development with Claude Code, enabling AI-assisted
 
 ### Project Overview
 - **Type**: Prism.js language definition plugin
-- **Purpose**: Syntax highlighting for a FHIR Shorthand language
+- **Purpose**: Syntax highlighting for a FHIR Shorthand (FSH) language
 - **Framework**: Prism.js extension
 - **License**: MIT
 - **Standards**: GitHub best practices, conventional commits
