@@ -52,29 +52,6 @@ code[class*="language-fsh"] ::selection {
   background: #f5f2f0;
 }*/
 
-pre[class*='language-fsh'] {
-  background-color: #eee;
-  text-shadow: unset;
-}
-
-pre[class*='language-fsh'] code[class*='language-fsh'] {
-  white-space: pre-wrap;
-  text-shadow: unset;
-}
-
-/* Inline code */
-:not(pre) > code[class*='language-fsh'] {
-  background-color: #eee;
-  padding: 0.1em 0.3em;
-  border: 1px solid #cccccc;
-  border-radius: 0.3em;
-  font-size: 1em;
-  display: inline-block;
-  margin: 2px 0;
-  text-shadow: unset;
-  white-space: normal;
-}
-
 /* Token styling */
 
 /* Comments - slate gray for excellent readability */
@@ -147,7 +124,6 @@ pre[class*='language-fsh'] .token.operator,
 pre[class*='language-fsh'] .token.rule-indicator {
   color: #9a6e3a;
   font-weight: bold;
-  background: unset;
 }
 
 /* Punctuation - subtle gray */
