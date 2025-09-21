@@ -7,6 +7,7 @@ FHIR Implementation Guides use a standardized set of stylesheets maintained by H
 ## Reference Stylesheets to Analyze
 
 ### 1. bootstrap-fhir.css
+
 - **URL**: https://github.com/HL7/ig-template-base/blob/master/content/assets/css/bootstrap-fhir.css
 - **Key Elements to Extract**:
   - Color palette for FHIR resources
@@ -16,6 +17,7 @@ FHIR Implementation Guides use a standardized set of stylesheets maintained by H
   - Table and list styling
 
 ### 2. hl7.css
+
 - **URL**: https://github.com/HL7/ig-template-base/blob/master/content/assets/css/hl7.css
 - **Key Elements to Extract**:
   - HL7 brand colors
@@ -25,6 +27,7 @@ FHIR Implementation Guides use a standardized set of stylesheets maintained by H
   - Print media queries
 
 ### 3. prism-fhirpath.css
+
 - **URL**: https://github.com/HL7/ig-template-base/blob/master/content/assets/css/prism-fhirpath.css
 - **Key Elements to Extract**:
   - FHIRPath token colors
@@ -34,6 +37,7 @@ FHIR Implementation Guides use a standardized set of stylesheets maintained by H
   - String literal formatting
 
 ### 4. prism.css
+
 - **URL**: https://github.com/HL7/ig-template-base/blob/master/content/assets/css/prism.css
 - **Key Elements to Extract**:
   - Base Prism theme
@@ -41,10 +45,11 @@ FHIR Implementation Guides use a standardized set of stylesheets maintained by H
   - Line numbering styles
   - Selection and focus states
   - Dark/light theme support
-</context>
-<instruction>
+    </context>
+    <instruction>
 
 ### Step 1: Color Extraction
+
 1. Download and analyze all four reference CSS files
 2. Extract the following color values:
    - Primary brand colors (HL7 blue, orange)
@@ -55,6 +60,7 @@ FHIR Implementation Guides use a standardized set of stylesheets maintained by H
    - Link and interactive element colors
 
 ### Step 2: Font and Typography
+
 1. Identify font families used:
    - Primary text font
    - Monospace/code font
@@ -63,11 +69,13 @@ FHIR Implementation Guides use a standardized set of stylesheets maintained by H
 3. Note font weights used for emphasis
 
 ### Step 3: Spacing and Layout
+
 1. Extract standard padding/margin values
 2. Identify border radius conventions
 3. Note standard spacing units (likely based on Bootstrap grid)
 
 ### Step 4: Create Color Mapping
+
 Map FSH elements to appropriate FHIR IG colors
 </instruction>
 <output>

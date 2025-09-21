@@ -7,6 +7,7 @@ FHIR Implementation Guides use a standardized set of stylesheets maintained by H
 ## Reference Stylesheets to Analyze
 
 ### 1. bootstrap-fhir.css
+
 - **URL**: https://github.com/HL7/ig-template-base/blob/master/content/assets/css/bootstrap-fhir.css
 - **Key Elements to Extract**:
   - Color palette for FHIR resources
@@ -16,6 +17,7 @@ FHIR Implementation Guides use a standardized set of stylesheets maintained by H
   - Table and list styling
 
 ### 2. hl7.css
+
 - **URL**: https://github.com/HL7/ig-template-base/blob/master/content/assets/css/hl7.css
 - **Key Elements to Extract**:
   - HL7 brand colors
@@ -25,6 +27,7 @@ FHIR Implementation Guides use a standardized set of stylesheets maintained by H
   - Print media queries
 
 ### 3. prism-fhirpath.css
+
 - **URL**: https://github.com/HL7/ig-template-base/blob/master/content/assets/css/prism-fhirpath.css
 - **Key Elements to Extract**:
   - FHIRPath token colors
@@ -34,6 +37,7 @@ FHIR Implementation Guides use a standardized set of stylesheets maintained by H
   - String literal formatting
 
 ### 4. prism.css
+
 - **URL**: https://github.com/HL7/ig-template-base/blob/master/content/assets/css/prism.css
 - **Key Elements to Extract**:
   - Base Prism theme
@@ -41,8 +45,8 @@ FHIR Implementation Guides use a standardized set of stylesheets maintained by H
   - Line numbering styles
   - Selection and focus states
   - Dark/light theme support
-</context>
-<requirement>
+    </context>
+    <requirement>
 
 ### FSH Token Mapping Strategy
 
@@ -57,7 +61,7 @@ Map FSH language constructs to FHIR IG visual concepts:
    - Align with FHIR metadata styling
    - Slightly muted compared to definitions
 
-3. **Cardinalities** (0..1, 1..*, etc.)
+3. **Cardinalities** (0..1, 1..\*, etc.)
    - Use FHIR constraint colors
    - Ensure clear readability
 
@@ -72,9 +76,11 @@ Map FSH language constructs to FHIR IG visual concepts:
 6. **Paths** (element.subelement[slice])
    - Match FHIR element path styling
    - Clear hierarchy indication
-</requirement>
-<instruction>
+     </requirement>
+     <instruction>
+
 ### Step 1: Color Extraction
+
 1. Download and analyze all four reference CSS files
 2. Extract the following color values:
    - Primary brand colors (HL7 blue, orange)
@@ -85,6 +91,7 @@ Map FSH language constructs to FHIR IG visual concepts:
    - Link and interactive element colors
 
 ### Step 2: Font and Typography
+
 1. Identify font families used:
    - Primary text font
    - Monospace/code font
@@ -93,15 +100,19 @@ Map FSH language constructs to FHIR IG visual concepts:
 3. Note font weights used for emphasis
 
 ### Step 3: Spacing and Layout
+
 1. Extract standard padding/margin values
 2. Identify border radius conventions
 3. Note standard spacing units (likely based on Bootstrap grid)
 
 ### Step 4: Create Color Mapping
+
 Map FSH elements to appropriate FHIR IG colors: docs\FSH-FHIR-IG-COLOR-MAPPING.md
 
 ### Step 5: Testing Scenarios
+
 Create test cases for:
+
 1. **Basic FSH file** - All token types visible
 2. **Within IG narrative** - Embedded in HTML context
 3. **Example tabs** - Multiple code views
@@ -111,6 +122,7 @@ Create test cases for:
 7. **High contrast** - Accessibility testing
 
 ### Step 6: Validation Checklist
+
 - [ ] Colors match FHIR IG palette
 - [ ] Fonts align with IG typography
 - [ ] Spacing consistent with IG layout
@@ -121,12 +133,15 @@ Create test cases for:
 - [ ] Dark mode compatible (if applicable)
 - [ ] Performance optimized (minimal CSS)
 - [ ] Cross-browser tested
-</instruction>
-<recommandation>
+      </instruction>
+      <recommandation>
+
 ## Expected Deliverables
 
 ### Primary Output: prism-lang-fsh.css
+
 A complete CSS file that:
+
 1. Integrates seamlessly with FHIR IG templates
 2. Provides clear FSH syntax highlighting
 3. Maintains consistency with existing Prism languages
@@ -134,6 +149,7 @@ A complete CSS file that:
 5. Includes comprehensive documentation
 
 ### Secondary Outputs:
+
 1. **Color palette documentation** - Extracted colors and their usage
 2. **Integration guide** - How to add to existing IGs
 3. **Test HTML file** - Demonstrates all styling
@@ -142,24 +158,29 @@ A complete CSS file that:
 ## Additional Considerations
 
 ### Browser Compatibility
+
 Ensure compatibility with:
+
 - Chrome/Edge 90+
 - Firefox 88+
 - Safari 14+
 - Mobile browsers
 
 ### Performance
+
 - Minimize CSS file size
 - Use efficient selectors
 - Avoid complex cascading
 - Consider CSS custom properties for theming
 
 ### Maintenance
+
 - Document all color choices
 - Provide update instructions for IG template changes
 - Include version compatibility notes
 
 ### Accessibility
+
 - Ensure color contrast ratios meet WCAG 2.1 AA
 - Support high contrast mode
 - Include focus indicators

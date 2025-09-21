@@ -26,6 +26,7 @@ We are committed to providing a friendly, safe, and welcoming environment for al
 ### Prerequisites
 
 Before you begin, ensure you have:
+
 - Node.js (v14 or higher)
 - npm (v6 or higher)
 - Git
@@ -36,22 +37,26 @@ Before you begin, ensure you have:
 
 1. Fork the repository on GitHub
 2. Clone your fork locally:
+
 ```bash
 git clone https://github.com/your-username/prism-lang-fsh.git
 cd prism-lang-fsh
 ```
 
 3. Add the upstream repository:
+
 ```bash
 git remote add upstream https://github.com/aphp/prism-lang-fsh.git
 ```
 
 4. Install dependencies:
+
 ```bash
 npm install
 ```
 
 5. Create a new branch for your feature:
+
 ```bash
 git checkout -b feature/your-feature-name
 ```
@@ -63,6 +68,7 @@ git checkout -b feature/your-feature-name
 Before creating bug reports, please check existing issues to avoid duplicates. When you create a bug report, include as many details as possible:
 
 **Bug Report Template:**
+
 - **Description**: Clear and concise description of the bug
 - **Steps to Reproduce**: List of steps to reproduce the behavior
 - **Expected Behavior**: What you expected to happen
@@ -91,16 +97,19 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 #### Pull Request Process
 
 1. **Ensure all tests pass**:
+
 ```bash
 npm test
 ```
 
 2. **Lint your code**:
+
 ```bash
 npm run lint
 ```
 
 3. **Build the project**:
+
 ```bash
 npm run build
 ```
@@ -115,20 +124,24 @@ npm run build
 
 ```markdown
 ## Description
+
 Brief description of the changes
 
 ## Type of Change
+
 - [ ] Bug fix
 - [ ] New feature
 - [ ] Breaking change
 - [ ] Documentation update
 
 ## Testing
+
 - [ ] All tests pass
 - [ ] Added new tests
 - [ ] Manually tested
 
 ## Checklist
+
 - [ ] Code follows style guidelines
 - [ ] Self-review completed
 - [ ] Documentation updated
@@ -153,17 +166,20 @@ When working on the language definition:
 ### Testing
 
 #### Unit Tests
+
 ```bash
 npm test
 ```
 
 #### Visual Testing
+
 ```bash
 npm run test:visual
 # Opens a browser to manually test highlighting
 ```
 
 #### Coverage
+
 ```bash
 npm run test:coverage
 ```
@@ -193,6 +209,7 @@ Follow the [Conventional Commits](https://www.conventionalcommits.org/) specific
 - `chore:` Maintenance tasks
 
 Examples:
+
 ```
 feat: add support for multiline comments
 fix: resolve issue with string escaping
@@ -209,6 +226,7 @@ docs: update installation instructions
 - Keep lines under 100 characters
 
 Example:
+
 ```javascript
 /**
  * Processes a token pattern
@@ -268,6 +286,7 @@ string: {
 ### README Updates
 
 Update the README when:
+
 - Adding new features
 - Changing installation steps
 - Modifying usage instructions
@@ -292,6 +311,7 @@ Update the README when:
 ### Recognition
 
 Contributors will be recognized in:
+
 - The project README
 - GitHub's contributor graph
 - Release notes for significant contributions

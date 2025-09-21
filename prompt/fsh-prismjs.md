@@ -17,104 +17,107 @@ You find language specification: docs/LANGUAGE_SPEC.md
 
 ```javascript
 Prism.languages.fsh = {
-    // Comments
-    'comment': [
-        {
-            pattern: /\/\/.*/,
-            greedy: true
-        },
-        {
-            pattern: /\/\*[\s\S]*?\*\//,
-            greedy: true
-        }
-    ],
-    
-    // Aliases (must be before URLs)
-    'alias': {
-        pattern: /^Alias:\s+\$[\w\-]+\s*=\s*.+$/m,
-        inside: {
-            'keyword': /^Alias:/,
-            'variable': /\$[\w\-]+/,
-            'operator': /=/,
-            'url': /https?:\/\/[^\s]+/
-        }
+  // Comments
+  comment: [
+    {
+      pattern: /\/\/.*/,
+      greedy: true
     },
-    
-    // Definition keywords (high priority)
-    'definition-keyword': {
-        pattern: /^(Profile|Extension|Instance|ValueSet|CodeSystem|RuleSet|Invariant|Mapping|Logical|Resource):/m,
-        alias: 'keyword important'
-    },
-    
-    // Metadata keywords
-    'metadata': {
-        pattern: /^(Id|Parent|Title|Description|Usage|Source|Target|Severity|XPath|Expression|Context):/m,
-        alias: 'keyword'
-    },
-    
-    // Cardinalities
-    'cardinality': /\b\d+\.\.([\d]+|\*)\b/,
-    
-    // Flags and modifiers
-    'modifier': /\b(MS|SU|D|TU|N)\b|\?\!/,
-    
-    // Action keywords
-    'keyword': /\b(contains|only|obeys|and|or|includes|excludes|from|named|insert|contentReference|codes|system|valueset)\b/,
-    
-    // Code systems and codes
-    'code': {
-        pattern: /(#[a-zA-Z0-9\-_]+|[A-Z]+#[a-zA-Z0-9\-_]+|\$[\w\-]+)/,
-        alias: 'symbol'
-    },
-    
-    // Strings (with display text)
-    'string': {
-        pattern: /"(?:[^"\\]|\\.)*"/,
-        greedy: true
-    },
-    
-    // URLs
-    'url': {
-        pattern: /https?:\/\/[^\s)]+/,
-        alias: 'link'
-    },
-    
-    // FSH paths
-    'path': {
-        pattern: /^\*\s+[a-zA-Z][a-zA-Z0-9.\[\]:^]+/m,
-        inside: {
-            'operator': /^\*/,
-            'property': /[a-zA-Z][a-zA-Z0-9]*/,
-            'punctuation': /[\[\].:^]/
-        }
-    },
-    
-    // Binding strength
-    'binding-strength': {
-        pattern: /\((required|extensible|preferred|example)\)/,
-        inside: {
-            'punctuation': /[()]/,
-            'keyword': /required|extensible|preferred|example/
-        }
-    },
-    
-    // Booleans
-    'boolean': /\b(true|false)\b/,
-    
-    // Numbers
-    'number': /\b\d+(\.\d+)?\b/,
-    
-    // Date/DateTime
-    'date': {
-        pattern: /"[\d]{4}-[\d]{2}-[\d]{2}(T[\d]{2}:[\d]{2}:[\d]{2}(Z|[+\-][\d]{2}:[\d]{2}))?"/,
-        alias: 'string'
-    },
-    
-    // Operators
-    'operator': /[=:]/,
-    
-    // Punctuation
-    'punctuation': /[(){}[\],]/
+    {
+      pattern: /\/\*[\s\S]*?\*\//,
+      greedy: true
+    }
+  ],
+
+  // Aliases (must be before URLs)
+  alias: {
+    pattern: /^Alias:\s+\$[\w\-]+\s*=\s*.+$/m,
+    inside: {
+      keyword: /^Alias:/,
+      variable: /\$[\w\-]+/,
+      operator: /=/,
+      url: /https?:\/\/[^\s]+/
+    }
+  },
+
+  // Definition keywords (high priority)
+  'definition-keyword': {
+    pattern:
+      /^(Profile|Extension|Instance|ValueSet|CodeSystem|RuleSet|Invariant|Mapping|Logical|Resource):/m,
+    alias: 'keyword important'
+  },
+
+  // Metadata keywords
+  metadata: {
+    pattern:
+      /^(Id|Parent|Title|Description|Usage|Source|Target|Severity|XPath|Expression|Context):/m,
+    alias: 'keyword'
+  },
+
+  // Cardinalities
+  cardinality: /\b\d+\.\.([\d]+|\*)\b/,
+
+  // Flags and modifiers
+  modifier: /\b(MS|SU|D|TU|N)\b|\?\!/,
+
+  // Action keywords
+  keyword:
+    /\b(contains|only|obeys|and|or|includes|excludes|from|named|insert|contentReference|codes|system|valueset)\b/,
+
+  // Code systems and codes
+  code: {
+    pattern: /(#[a-zA-Z0-9\-_]+|[A-Z]+#[a-zA-Z0-9\-_]+|\$[\w\-]+)/,
+    alias: 'symbol'
+  },
+
+  // Strings (with display text)
+  string: {
+    pattern: /"(?:[^"\\]|\\.)*"/,
+    greedy: true
+  },
+
+  // URLs
+  url: {
+    pattern: /https?:\/\/[^\s)]+/,
+    alias: 'link'
+  },
+
+  // FSH paths
+  path: {
+    pattern: /^\*\s+[a-zA-Z][a-zA-Z0-9.\[\]:^]+/m,
+    inside: {
+      operator: /^\*/,
+      property: /[a-zA-Z][a-zA-Z0-9]*/,
+      punctuation: /[\[\].:^]/
+    }
+  },
+
+  // Binding strength
+  'binding-strength': {
+    pattern: /\((required|extensible|preferred|example)\)/,
+    inside: {
+      punctuation: /[()]/,
+      keyword: /required|extensible|preferred|example/
+    }
+  },
+
+  // Booleans
+  boolean: /\b(true|false)\b/,
+
+  // Numbers
+  number: /\b\d+(\.\d+)?\b/,
+
+  // Date/DateTime
+  date: {
+    pattern: /"[\d]{4}-[\d]{2}-[\d]{2}(T[\d]{2}:[\d]{2}:[\d]{2}(Z|[+\-][\d]{2}:[\d]{2}))?"/,
+    alias: 'string'
+  },
+
+  // Operators
+  operator: /[=:]/,
+
+  // Punctuation
+  punctuation: /[(){}[\],]/
 };
 
 // Aliases for better compatibility
@@ -126,46 +129,47 @@ Prism.languages['fhir-shorthand'] = Prism.languages.fsh;
 
 ```css
 /* FSH Theme for PrismJS */
-.token.definition-keyword { 
-    color: #d73a49; 
-    font-weight: bold; 
+.token.definition-keyword {
+  color: #d73a49;
+  font-weight: bold;
 }
 
-.token.metadata { 
-    color: #6f42c1; 
-    font-weight: bold; 
+.token.metadata {
+  color: #6f42c1;
+  font-weight: bold;
 }
 
-.token.modifier { 
-    color: #e36209; 
-    font-weight: bold; 
+.token.modifier {
+  color: #e36209;
+  font-weight: bold;
 }
 
-.token.cardinality { 
-    color: #22863a; 
+.token.cardinality {
+  color: #22863a;
 }
 
-.token.path .property { 
-    color: #032f62; 
+.token.path .property {
+  color: #032f62;
 }
 
-.token.code { 
-    color: #6f42c1; 
-    background: #f6f8fa; 
-    padding: 0.1em 0.3em; 
-    border-radius: 3px; 
+.token.code {
+  color: #6f42c1;
+  background: #f6f8fa;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
 }
 
 .token.binding-strength .keyword {
-    color: #d73a49;
-    font-style: italic;
+  color: #d73a49;
+  font-style: italic;
 }
 
 .token.alias .variable {
-    color: #005cc5;
-    font-weight: bold;
+  color: #005cc5;
+  font-weight: bold;
 }
 ```
+
 </technical-specification>
 <instruction>
 ### Phase 1: Analysis and Preparation
@@ -176,6 +180,7 @@ Prism.languages['fhir-shorthand'] = Prism.languages.fsh;
 5. Review official FSH specification for edge cases
 
 ### Phase 2: Plugin Development
+
 1. Use `src/prism-lang-fsh.js` with complete structure
 2. Implement recognition for all syntactic elements
 3. Handle special cases and token nesting
@@ -183,6 +188,7 @@ Prism.languages['fhir-shorthand'] = Prism.languages.fsh;
 5. Ensure proper token precedence and greedy matching
 
 ### Phase 3: Testing and Validation
+
 1. Create `test/visual.html` with comprehensive demo page
 2. Include all identified use cases
 3. Test with provided examples
@@ -191,13 +197,14 @@ Prism.languages['fhir-shorthand'] = Prism.languages.fsh;
 6. Validate performance with large FSH files
 
 ### Phase 4: Documentation
+
 1. Create detailed README.md
 2. Document installation and usage
 3. Provide CSS customization examples
 4. List available tokens and their usage
 5. Include troubleshooting section
-</instruction>
-<recommandation>
+   </instruction>
+   <recommandation>
 
 ## Expected Deliverables
 
@@ -237,11 +244,12 @@ Prism.languages['fhir-shorthand'] = Prism.languages.fsh;
 - [ ] No conflicts with other language plugins
 - [ ] Minified version works correctly
 - [ ] Documentation examples all work
-</recommandation>
-<exemple>
-</exemple>
-<output>
-The plugin will be considered complete when it:
+      </recommandation>
+      <exemple>
+      </exemple>
+      <output>
+      The plugin will be considered complete when it:
+
 1. Correctly highlights all FSH language constructs
 2. Performs well on files up to 10,000 lines
 3. Integrates seamlessly with existing PrismJS installations
@@ -249,4 +257,4 @@ The plugin will be considered complete when it:
 5. Includes comprehensive documentation and examples
 6. Passes all test cases without errors
 7. Works across modern browsers (Chrome, Firefox, Safari, Edge)
-</output>
+   </output>

@@ -40,13 +40,13 @@
 
   Prism.languages.fsh = {
     // URLs (very high priority to avoid conflicts with comments)
-    'url': {
+    url: {
       pattern: /https?:\/\/[^\s)"\]}]+/,
       alias: 'link'
     },
 
     // Comments (high priority, but after URLs)
-    'comment': [
+    comment: [
       {
         // Single-line comments
         pattern: /\/\/.*/,
@@ -60,26 +60,28 @@
     ],
 
     // Aliases (high priority to catch before other patterns)
-    'alias': {
+    alias: {
       pattern: /^Alias:\s+\$[\w-]+\s*=\s*.+$/m,
       inside: {
-        'keyword': /^Alias:/,
-        'variable': /\$[\w-]+/,
-        'operator': /=/,
-        'url': /https?:\/\/[^\s]+/,
-        'string': /.*$/
+        keyword: /^Alias:/,
+        variable: /\$[\w-]+/,
+        operator: /=/,
+        url: /https?:\/\/[^\s]+/,
+        string: /.*$/
       }
     },
 
     // Definition keywords (very high priority)
     'definition-keyword': {
-      pattern: /^(Profile|Extension|Instance|ValueSet|CodeSystem|RuleSet|Invariant|Mapping|Logical|Resource):/m,
+      pattern:
+        /^(Profile|Extension|Instance|ValueSet|CodeSystem|RuleSet|Invariant|Mapping|Logical|Resource):/m,
       alias: 'keyword important'
     },
 
     // Metadata keywords
     'metadata-keyword': {
-      pattern: /^(Id|Parent|Title|Description|Usage|Source|Target|Severity|XPath|Expression|Context|InstanceOf):/m,
+      pattern:
+        /^(Id|Parent|Title|Description|Usage|Source|Target|Severity|XPath|Expression|Context|InstanceOf):/m,
       alias: 'keyword'
     },
 
@@ -91,13 +93,13 @@
     },
 
     // Code system references and codes
-    'code': [
+    code: [
       {
         // System#code (without display text): SCT#123456
         pattern: /[A-Z$][\w-]*#[\w-.]+/,
         inside: {
           'code-system': /^[A-Z$][\w-]*/,
-          'operator': /#/,
+          operator: /#/,
           'code-value': /[\w-.]+/
         },
         alias: 'symbol'
@@ -115,19 +117,19 @@
     ],
 
     // Date/DateTime patterns (must come before regular strings)
-    'date': {
+    date: {
       pattern: /"[\d]{4}-[\d]{2}-[\d]{2}(T[\d]{2}:[\d]{2}:[\d]{2}(Z|[+-][\d]{2}:[\d]{2})?)?"/,
       alias: 'string'
     },
 
     // Cardinalities (must come before numbers to match properly)
-    'cardinality': {
+    cardinality: {
       pattern: /\b\d+\.\.([\d]+|\*)(?!\w)/,
       alias: 'number'
     },
 
     // Flags and modifiers
-    'modifier': {
+    modifier: {
       pattern: /\b(MS|SU|D|TU|N)\b|\?!/,
       alias: 'important'
     },
@@ -137,9 +139,9 @@
       pattern: /^\s*\*\s+(?:[a-zA-Z][a-zA-Z0-9.[\]:]*\s+)?\^[a-zA-Z][a-zA-Z0-9.[\]:]*(?=\s|$)/m,
       inside: {
         'rule-indicator': /^\s*\*/,
-        'caret': /\^/,
+        caret: /\^/,
         'path-component': /[a-zA-Z][a-zA-Z0-9]*/,
-        'punctuation': /[[\].:]/
+        punctuation: /[[\].:]/
       }
     },
 
@@ -149,14 +151,15 @@
       inside: {
         'rule-indicator': /^\s*\*/,
         'path-component': /[a-zA-Z][a-zA-Z0-9]*/,
-        'punctuation': /[[\].:^]/,
+        punctuation: /[[\].:^]/,
         'slice-name': /\[[a-zA-Z][a-zA-Z0-9-]*\]/
       }
     },
 
     // Action keywords and binding keywords
     'action-keyword': {
-      pattern: /\b(contains|only|obeys|and|or|includes|excludes|from|named|insert|codes|system|valueset|where)\b/,
+      pattern:
+        /\b(contains|only|obeys|and|or|includes|excludes|from|named|insert|codes|system|valueset|where)\b/,
       alias: 'keyword'
     },
 
@@ -164,32 +167,31 @@
     'binding-strength': {
       pattern: /\((required|extensible|preferred|example)\)/,
       inside: {
-        'punctuation': /[()]/,
-        'keyword': /(required|extensible|preferred|example)/
+        punctuation: /[()]/,
+        keyword: /(required|extensible|preferred|example)/
       }
     },
 
     // Regular strings
-    'string': {
+    string: {
       pattern: /"(?:[^"\\]|\\.)*"/,
       greedy: true
     },
 
     // Boolean values
-    'boolean': /\b(true|false)\b/,
+    boolean: /\b(true|false)\b/,
 
     // Numbers (integers and decimals)
-    'number': /\b\d+(\.\d+)?\b/,
-
+    number: /\b\d+(\.\d+)?\b/,
 
     // Operators
-    'operator': /[=:]/,
+    operator: /[=:]/,
 
     // Punctuation
-    'punctuation': /[(){}[\],]/,
+    punctuation: /[(){}[\],]/,
 
     // Identifiers (catch-all for remaining words)
-    'identifier': /\b[a-zA-Z_]\w*\b/
+    identifier: /\b[a-zA-Z_]\w*\b/
   };
 
   // Handle nested contexts
@@ -200,6 +202,4 @@
   // Language aliases for better compatibility
   Prism.languages.fhirshorthand = Prism.languages.fsh;
   Prism.languages['fhir-shorthand'] = Prism.languages.fsh;
-
-}(typeof global !== 'undefined' ? global.Prism : window.Prism));
-
+})(typeof global !== 'undefined' ? global.Prism : window.Prism);

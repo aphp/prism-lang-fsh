@@ -94,22 +94,20 @@ module.exports = {
    * Helper to get token types from tokenization result
    */
   getTokenTypes: (tokens) => {
-    return tokens
-      .filter(t => typeof t === 'object' && t.type)
-      .map(t => t.type);
+    return tokens.filter((t) => typeof t === 'object' && t.type).map((t) => t.type);
   },
 
   /**
    * Helper to find token by type
    */
   findTokenByType: (tokens, type) => {
-    return tokens.find(t => t && t.type === type);
+    return tokens.find((t) => t && t.type === type);
   },
 
   /**
    * Helper to count tokens of specific type
    */
   countTokensByType: (tokens, type) => {
-    return tokens.filter(t => t && t.type === type).length;
+    return tokens.filter((t) => t && t.type === type).length;
   }
 };

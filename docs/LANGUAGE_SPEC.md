@@ -1,6 +1,7 @@
 # Language Specification
 
 ## Overview
+
 This document defines the specification for the FHIR Shorthand (FSH) language supported by the Prism.js plugin.
 
 FHIR Shorthand is a domain-specific language designed for creating and maintaining FHIR (Fast Healthcare Interoperability Resources) implementation guides. FSH enables concise definition of profiles, extensions, value sets, code systems, and other FHIR conformance resources.
@@ -12,9 +13,11 @@ FHIR Shorthand is a domain-specific language designed for creating and maintaini
 ## Language Features
 
 ### Comments
+
 The language supports two types of comments:
 
 1. **Single-line comments**: Begin with `//` and continue to the end of the line
+
    ```fsh
    // This is a single-line comment
    * status = #active  // Comment at end of line
@@ -27,6 +30,7 @@ The language supports two types of comments:
    ```
 
 ### String Literals
+
 FSH supports string literals in the following contexts:
 
 - **Double-quoted strings**: `"text"`
@@ -46,6 +50,7 @@ FSH supports string literals in the following contexts:
 - **Escape sequences**: Standard escape sequences are supported (`\"`, `\\`, `\n`, `\t`)
 
 ### Numeric Literals
+
 - **Integers**: `42`, `0`, `-15`
 - **Decimals**: `3.14`, `0.5`, `-2.7`
 - **Scientific notation**: Not commonly used in FSH
@@ -53,7 +58,9 @@ FSH supports string literals in the following contexts:
 ### Keywords
 
 #### Definition Keywords
+
 Reserved words that define FHIR artifacts:
+
 - `Profile:` - Defines a profile
 - `Extension:` - Defines an extension
 - `Instance:` - Defines an instance
@@ -66,7 +73,9 @@ Reserved words that define FHIR artifacts:
 - `Resource:` - Defines a resource
 
 #### Metadata Keywords
+
 Keywords for artifact metadata:
+
 - `Id:` - Artifact identifier
 - `Parent:` - Parent resource/profile
 - `Title:` - Human-readable title
@@ -81,7 +90,9 @@ Keywords for artifact metadata:
 - `Alias:` - Define aliases
 
 #### Action Keywords
+
 Keywords for rules and constraints:
+
 - `contains` - Slice definition
 - `only` - Type constraint
 - `obeys` - Invariant application
@@ -100,6 +111,7 @@ Keywords for rules and constraints:
 ### Operators
 
 #### Assignment Operator
+
 - Assignment: `=`
   ```fsh
   * status = #active
@@ -107,6 +119,7 @@ Keywords for rules and constraints:
   ```
 
 #### Path Operators
+
 - Dot notation: `.`
   ```fsh
   * patient.name.family
@@ -118,6 +131,7 @@ Keywords for rules and constraints:
   ```
 
 #### Cardinality Operators
+
 - Range: `..`
   ```fsh
   * identifier 1..1
@@ -127,6 +141,7 @@ Keywords for rules and constraints:
 ### Special Symbols
 
 #### Flags and Modifiers
+
 - `MS` - Must Support flag
 - `SU` - Summary flag
 - `?!` - Modifier extension flag
@@ -136,6 +151,7 @@ Keywords for rules and constraints:
 - `^` - Metadata/slice indicator
 
 #### Code Reference Symbols
+
 - `#` - Code literal prefix
   ```fsh
   * status = #active
@@ -148,6 +164,7 @@ Keywords for rules and constraints:
   ```
 
 #### Rule Indicator
+
 - `*` - Rule prefix
   ```fsh
   * identifier 1..1 MS
@@ -164,7 +181,7 @@ When multiple patterns could match the same text, the following precedence order
 4. Metadata keywords (Id:, Parent:, etc.)
 5. String literals (including multi-line)
 6. Code references (#code, SYSTEM#code)
-7. Cardinalities (0..1, 1..*, etc.)
+7. Cardinalities (0..1, 1..\*, etc.)
 8. Flags and modifiers (MS, SU, ?!, etc.)
 9. Action keywords (contains, only, from, etc.)
 10. Binding strengths (required, extensible, preferred, example)
@@ -177,14 +194,18 @@ When multiple patterns could match the same text, the following precedence order
 ## Special Constructs
 
 ### Aliases
+
 Aliases provide shorthand references for URIs:
+
 ```fsh
 Alias: $sct = http://snomed.info/sct
 Alias: $loinc = http://loinc.org
 ```
 
 ### RuleSets
+
 Reusable sets of rules:
+
 ```fsh
 RuleSet: CommonRules
 * status MS
@@ -195,7 +216,9 @@ RuleSet: CommonRules
 ```
 
 ### Slicing
+
 Define slices within elements:
+
 ```fsh
 * extension contains
     timing 0..1 MS and
@@ -203,13 +226,16 @@ Define slices within elements:
 ```
 
 ### Binding Syntax
+
 Terminology bindings with strength:
+
 ```fsh
 * code from MyValueSet (required)
 * category from http://example.org/ValueSet/categories (extensible)
 ```
 
 ### Code System References
+
 ```fsh
 * code = SCT#123456 "Display Text"
 * code = http://loinc.org#1234-5
@@ -217,6 +243,7 @@ Terminology bindings with strength:
 ```
 
 ### Inline Instances
+
 ```fsh
 * contained[0] = ExamplePatient
 Instance: ExamplePatient
@@ -227,31 +254,39 @@ Usage: #inline
 ## Edge Cases
 
 ### Nested Comments
+
 Multi-line comments cannot be nested:
+
 ```fsh
 /* Valid comment /* This part is text, not a nested comment */ still in comment */
 ```
 
 ### String Escapes
+
 Escape sequences in strings:
+
 ```fsh
 * text = "Line 1\nLine 2"
 * quote = "She said \"Hello\""
 ```
 
 ### Reserved Words as Properties
+
 FSH keywords can appear as part of paths:
+
 ```fsh
 * component.code  // 'code' here is a property, not a keyword
 ```
 
 ### Special Characters in Identifiers
+
 ```fsh
 * extension[us-core-race]
 * value[x]
 ```
 
 ### URLs in Values
+
 ```fsh
 * system = "http://example.org/system"
 * reference = Reference(Patient/123)
@@ -277,20 +312,24 @@ FSH keywords can appear as part of paths:
 ## Compatibility
 
 ### FSH Versions
+
 - FSH 1.x: Basic support
 - FSH 2.x: Full support including RuleSets
 - FSH 3.x: Complete support with all features
 
 ### FHIR Versions
+
 - FHIR R4 (4.0.1): Full support
 - FHIR R4B (4.3.0): Full support
 - FHIR R5 (5.0.0): Full support
 
 ### PrismJS Versions
+
 - PrismJS 1.x: Compatible with 1.15+
 - PrismJS 2.x: Planned support
 
 ### Browser Compatibility
+
 - Chrome 90+
 - Firefox 88+
 - Safari 14+
@@ -434,6 +473,7 @@ Description: "Organization-specific codes"
 ## Future Extensions
 
 ### Planned Features
+
 1. **Import statements**: Support for importing external FSH files
 2. **Parameterized RuleSets**: RuleSets with parameters
 3. **Conditional rules**: If-then-else constructs
@@ -441,12 +481,14 @@ Description: "Organization-specific codes"
 5. **Inline validation**: FHIRPath validation expressions
 
 ### Syntax Evolution
+
 - Support for FHIR R6 when released
 - Enhanced slicing syntax
 - Improved code system hierarchies
 - Extended metadata annotations
 
 ### Tool Integration
+
 - Enhanced IDE support markers
 - Debugging symbols
 - Source maps for generated FHIR resources

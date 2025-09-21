@@ -82,13 +82,19 @@ npm install prism-lang-fsh
 ```html
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <!-- Include Prism CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-min.css"
+      rel="stylesheet"
+    />
     <!-- Include FSH theme (optional) -->
-    <link href="https://cdn.jsdelivr.net/npm/prism-lang-fsh@0.1.0/prism-lang-fsh.min.css" rel="stylesheet" />
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/prism-lang-fsh@0.1.0/prism-lang-fsh.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <pre><code class="language-fsh">
 // FHIR Shorthand Profile Example
 Profile: MyPatientProfile
@@ -109,10 +115,10 @@ Description: "A custom patient profile with additional constraints"
     <script src="https://cdn.jsdelivr.net/npm/prism-lang-fsh@0.1.0/prism-lang-fsh.min.js"></script>
 
     <script>
-        // Highlight all code blocks
-        Prism.highlightAll();
+      // Highlight all code blocks
+      Prism.highlightAll();
     </script>
-</body>
+  </body>
 </html>
 ```
 
@@ -161,17 +167,20 @@ The plugin recognizes and highlights these FSH language elements:
 ### Setup
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/aphp/prism-lang-fsh.git
 cd prism-lang-fsh
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start development:
+
 ```bash
 npm run dev
 ```
@@ -204,6 +213,7 @@ open test/visual.html
 ```
 
 The test suite includes:
+
 - **Unit tests** for all token types
 - **Integration tests** with real FSH files
 - **Performance tests** for large files
@@ -213,6 +223,7 @@ The test suite includes:
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
+
 - Code of Conduct
 - Development workflow
 - Submitting pull requests
@@ -235,6 +246,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📚 Resources
 
 ### FHIR Shorthand
+
 - [FHIR Shorthand Official Specification](https://build.fhir.org/ig/HL7/fhir-shorthand/)
 - [FSH School - Interactive Tutorial](https://fshschool.org/)
 - [SUSHI - FSH Compiler](https://github.com/FHIR/sushi)
@@ -242,11 +254,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [FSH Language Grammar](https://github.com/FHIR/sushi/blob/master/antlr/src/main/antlr4/FSH.g4)
 
 ### Prism.js
+
 - [Prism.js Documentation](https://prismjs.com/docs/)
 - [Creating a Prism.js Language Definition](https://prismjs.com/extending.html#language-definitions)
 - [Language Definition Examples](https://github.com/PrismJS/prism/tree/master/components)
 
 ### FHIR
+
 - [HL7 FHIR Specification](https://www.hl7.org/fhir/)
 - [FHIR Implementation Guides](https://www.hl7.org/fhir/implementationguide.html)
 
@@ -265,19 +279,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 This plugin provides comprehensive syntax highlighting for all major FSH language constructs:
 
-| Feature | Support | Examples |
-|---------|---------|----------|
-| Comments | ✅ Full | `// comment`, `/* block */` |
-| Aliases | ✅ Full | `Alias: $sct = http://snomed.info/sct` |
-| Definitions | ✅ Full | `Profile:`, `Extension:`, `ValueSet:` |
-| Metadata | ✅ Full | `Id:`, `Parent:`, `Title:`, `Description:` |
-| Rules | ✅ Full | `* element 1..* MS` |
-| Codes | ✅ Full | `#active`, `SCT#123456`, `$sct#code` |
-| Cardinalities | ✅ Full | `0..1`, `1..*`, `0..5` |
-| Flags | ✅ Full | `MS`, `SU`, `?!`, `D`, `TU`, `N` |
-| Actions | ✅ Full | `contains`, `only`, `from`, `obeys` |
-| Bindings | ✅ Full | `(required)`, `(extensible)` |
-| URLs | ✅ Full | `http://example.org/path` |
-| Strings | ✅ Full | `"text"`, `"""multi-line"""` |
-| Paths | ✅ Full | `extension[name].value[x]` |
-| Caret Rules | ✅ Full | `* ^status = #active` |
+| Feature       | Support | Examples                                   |
+| ------------- | ------- | ------------------------------------------ |
+| Comments      | ✅ Full | `// comment`, `/* block */`                |
+| Aliases       | ✅ Full | `Alias: $sct = http://snomed.info/sct`     |
+| Definitions   | ✅ Full | `Profile:`, `Extension:`, `ValueSet:`      |
+| Metadata      | ✅ Full | `Id:`, `Parent:`, `Title:`, `Description:` |
+| Rules         | ✅ Full | `* element 1..* MS`                        |
+| Codes         | ✅ Full | `#active`, `SCT#123456`, `$sct#code`       |
+| Cardinalities | ✅ Full | `0..1`, `1..*`, `0..5`                     |
+| Flags         | ✅ Full | `MS`, `SU`, `?!`, `D`, `TU`, `N`           |
+| Actions       | ✅ Full | `contains`, `only`, `from`, `obeys`        |
+| Bindings      | ✅ Full | `(required)`, `(extensible)`               |
+| URLs          | ✅ Full | `http://example.org/path`                  |
+| Strings       | ✅ Full | `"text"`, `"""multi-line"""`               |
+| Paths         | ✅ Full | `extension[name].value[x]`                 |
+| Caret Rules   | ✅ Full | `* ^status = #active`                      |

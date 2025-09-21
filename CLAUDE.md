@@ -9,6 +9,7 @@ This project is optimized for development with Claude Code, enabling AI-assisted
 ## 📋 Project Context for Claude
 
 ### Project Overview
+
 - **Type**: Prism.js language definition plugin
 - **Purpose**: Syntax highlighting for a FHIR Shorthand (FSH) language
 - **Framework**: Prism.js extension
@@ -16,6 +17,7 @@ This project is optimized for development with Claude Code, enabling AI-assisted
 - **Standards**: GitHub best practices, conventional commits
 
 ### Key Technical Requirements
+
 1. **Prism.js Compatibility**: Must follow Prism.js plugin architecture
 2. **Performance**: Regex patterns must avoid catastrophic backtracking
 3. **Testing**: Comprehensive test coverage required
@@ -32,11 +34,13 @@ When creating the language definition with Claude:
 Task: Create a Prism.js language definition for FHIR Shorthand
 
 Context:
+
 - Language paradigm: [procedural/functional/object-oriented]
 - Similar to: [existing languages for reference]
 - Key features: [list unique syntax features]
 
 Requirements:
+
 1. Define token patterns for:
    - Comments (single-line, multi-line)
    - Strings (with escape sequences)
@@ -63,16 +67,19 @@ When asking Claude to write regex patterns:
 Task: Write a regex pattern for [FEATURE]
 
 Requirements:
+
 - Must handle: [list all cases]
 - Must NOT match: [list exclusions]
 - Performance: Avoid backtracking
 - Use non-capturing groups where possible
 
 Examples to match:
+
 - [example 1]
 - [example 2]
 
 Examples to NOT match:
+
 - [counter-example 1]
 - [counter-example 2]
 ```
@@ -85,13 +92,15 @@ For comprehensive test creation:
 Task: Generate test cases for FHIR Shorthand syntax highlighting
 
 Include tests for:
+
 1. Basic tokens (keywords, operators, etc.)
 2. Complex constructs (nested structures)
 3. Edge cases (empty, malformed)
 4. Performance cases (long strings, deep nesting)
 5. Common patterns from real code
 
-Format: 
+Format:
+
 - Input code
 - Expected token structure
 - Visual verification HTML
@@ -105,6 +114,7 @@ When creating documentation with Claude:
 Task: Document the [FEATURE/API/USAGE]
 
 Include:
+
 1. Purpose and overview
 2. Syntax/API reference
 3. Code examples (at least 3)
@@ -118,24 +128,30 @@ Include:
 ### Initial Setup Phase
 
 1. **Define the Language Specification**
+
 ```markdown
 Claude, help me define the language specification for FHIR Shorhand:
+
 - Provide a comprehensive list of language features
 - Identify unique syntax elements
 - Suggest token categories needed
 ```
 
 2. **Create Core Language Definition**
+
 ```markdown
 Claude, create the initial prism-lang-fsh.js file with:
+
 - Basic token definitions
 - Pattern implementations
 - Prism.js registration code
 ```
 
 3. **Generate Test Suite**
+
 ```markdown
 Claude, generate comprehensive test cases covering:
+
 - All token types
 - Edge cases
 - Real-world code examples
@@ -144,6 +160,7 @@ Claude, generate comprehensive test cases covering:
 ### Iterative Development
 
 1. **Pattern Refinement**
+
 ```markdown
 Claude, this pattern [PATTERN] is matching incorrectly.
 Current behavior: [description]
@@ -153,6 +170,7 @@ Please provide a corrected pattern.
 ```
 
 2. **Performance Optimization**
+
 ```markdown
 Claude, analyze this regex pattern for performance issues:
 [PATTERN]
@@ -160,8 +178,10 @@ Suggest optimizations to prevent backtracking.
 ```
 
 3. **Feature Addition**
+
 ```markdown
 Claude, add support for [FEATURE]:
+
 - Syntax: [description]
 - Examples: [code samples]
 - Similar to: [reference from other language]
@@ -172,6 +192,7 @@ Claude, add support for [FEATURE]:
 When reviewing code with Claude, check:
 
 ### Language Definition
+
 - [ ] All token types are defined
 - [ ] Patterns are efficient (no catastrophic backtracking)
 - [ ] Greedy flag used appropriately
@@ -179,6 +200,7 @@ When reviewing code with Claude, check:
 - [ ] Edge cases handled
 
 ### Testing
+
 - [ ] Unit tests cover all tokens
 - [ ] Visual tests render correctly
 - [ ] Performance tests pass
@@ -186,6 +208,7 @@ When reviewing code with Claude, check:
 - [ ] Real-world examples work
 
 ### Documentation
+
 - [ ] README is complete
 - [ ] API documentation is clear
 - [ ] Examples are working
@@ -193,6 +216,7 @@ When reviewing code with Claude, check:
 - [ ] Comments explain complex patterns
 
 ### Code Quality
+
 - [ ] ESLint passes
 - [ ] Follows project conventions
 - [ ] No console.log statements
@@ -204,26 +228,31 @@ When reviewing code with Claude, check:
 ### Effective Prompts for Claude
 
 1. **Be Specific**
+
 ```markdown
 ❌ "Fix the string pattern"
 ✅ "The string pattern currently doesn't handle escaped quotes. Update it to match: 'It\'s working' and "She said \"Hello\""
 ```
 
 2. **Provide Context**
+
 ```markdown
 ✅ "In the context of a Prism.js plugin, create a pattern that matches function declarations in FHIR Shorthand, similar to JavaScript but with 'fn' keyword instead of 'function'"
 ```
 
 3. **Include Examples**
+
 ```markdown
 ✅ "Create a pattern for comments that matches:
+
 - Single line: // comment
-- Multi-line: /* comment */
-- Doc comments: /** comment */
-But NOT: http://url (the // in URLs)"
+- Multi-line: /_ comment _/
+- Doc comments: /\*_ comment _/
+  But NOT: http://url (the // in URLs)"
 ```
 
 4. **Request Explanations**
+
 ```markdown
 ✅ "Explain why you chose this regex pattern and how it avoids backtracking"
 ```
@@ -231,8 +260,10 @@ But NOT: http://url (the // in URLs)"
 ## 🛠️ Common Tasks Reference
 
 ### Task 1: Add New Token Type
+
 ```markdown
 Claude, add a new token type for [TOKEN_NAME]:
+
 1. Define the pattern
 2. Set appropriate precedence
 3. Add test cases
@@ -240,8 +271,10 @@ Claude, add a new token type for [TOKEN_NAME]:
 ```
 
 ### Task 2: Fix Pattern Conflict
+
 ```markdown
 Claude, resolve pattern conflict:
+
 - Pattern A: [pattern] matches [examples]
 - Pattern B: [pattern] matches [examples]
 - Conflict: Both match [example]
@@ -249,8 +282,10 @@ Claude, resolve pattern conflict:
 ```
 
 ### Task 3: Optimize Performance
+
 ```markdown
 Claude, optimize the language definition:
+
 1. Identify potential performance issues
 2. Suggest pattern improvements
 3. Implement lazy quantifiers where appropriate
@@ -258,8 +293,10 @@ Claude, optimize the language definition:
 ```
 
 ### Task 4: Generate Documentation
+
 ```markdown
 Claude, generate documentation for:
+
 1. Installation guide with all methods
 2. Configuration options
 3. API reference with examples
@@ -272,22 +309,26 @@ Claude, generate documentation for:
 When working with Claude, reference these:
 
 ### Prism.js Documentation
+
 - [Official Docs](https://prismjs.com/docs/)
 - [Language Definition Guide](https://prismjs.com/extending.html#language-definitions)
 - [Token Names Reference](https://prismjs.com/tokens.html)
 
 ### FHIR Shorhand Documentation
+
 - [Official Docs](https://hl7.org/fhir/uv/shorthand/)
 - [Language Definition Guide](https://hl7.org/fhir/uv/shorthand/reference.html)
 - [FSH Grammar](https://github.com/FHIR/sushi/blob/v3.8.0/antlr/src/main/antlr/FSH.g4)
 
 ### Regex Resources
+
 - Use non-capturing groups: `(?:...)`
 - Prefer lazy quantifiers: `*?`, `+?`
 - Avoid nested quantifiers
 - Use atomic groups when possible
 
 ### Pattern Examples from Prism.js
+
 ```javascript
 // String with escapes
 string: {
@@ -318,30 +359,32 @@ keyword: /\b(?:if|else|while|for|return|function)\b/
 When generating code with Claude:
 
 ### JavaScript Style
+
 ```javascript
 // Preferred style
 Prism.languages.fsh = {
-  'comment': {
+  comment: {
     pattern: /\/\/.*/,
     greedy: true
   },
-  'string': {
+  string: {
     pattern: /(["'])(?:\\.|(?!\1)[^\\\r\n])*\1/,
     greedy: true
   },
-  'keyword': /\b(?:if|else|while)\b/,
-  'operator': /[+\-*/%]=?|[<>]=?|==|&&|\|\|/,
-  'punctuation': /[{}[\];(),.:]/
+  keyword: /\b(?:if|else|while)\b/,
+  operator: /[+\-*/%]=?|[<>]=?|==|&&|\|\|/,
+  punctuation: /[{}[\];(),.:]/
 };
 ```
 
 ### Test Style
+
 ```javascript
 describe('Language Definition', () => {
   it('should highlight keywords', () => {
     const code = 'if (condition) { return true; }';
     const tokens = Prism.tokenize(code, Prism.languages.fsh);
-    
+
     expect(tokens[0].type).toBe('keyword');
     expect(tokens[0].content).toBe('if');
   });
@@ -357,8 +400,10 @@ Claude, debug this highlighting issue:
 
 Input code:
 ```
+
 [paste code]
-```
+
+````
 
 Current output:
 [describe what tokens are generated]
@@ -369,10 +414,11 @@ Expected output:
 Language definition:
 ```javascript
 [paste relevant part of definition]
-```
+````
 
 Please identify the issue and provide a fix.
-```
+
+````
 
 ## 📈 Performance Optimization
 
@@ -383,14 +429,16 @@ Claude, analyze these patterns for performance:
 
 ```javascript
 [paste language definition]
-```
+````
 
 Please:
+
 1. Identify patterns prone to backtracking
 2. Suggest optimized versions
 3. Explain the improvements
 4. Provide benchmark comparisons if possible
-```
+
+````
 
 ## 🔄 Iteration Guidelines
 
@@ -427,9 +475,10 @@ Common issues and how to ask for help:
 Pattern [PATTERN] isn't matching [EXAMPLE].
 Debug info: [any console output]
 Please fix and explain the issue.
-```
+````
 
 ### Performance Issues
+
 ```markdown
 The plugin is slow with [FILE SIZE] files.
 Suspect patterns: [list patterns]
@@ -437,6 +486,7 @@ Please optimize for better performance.
 ```
 
 ### Token Conflicts
+
 ```markdown
 Tokens [TOKEN1] and [TOKEN2] are conflicting.
 Example: [code that shows conflict]
@@ -449,6 +499,7 @@ When ready to deploy, ask Claude:
 
 ```markdown
 Claude, prepare the project for deployment:
+
 1. Verify all files are complete
 2. Check package.json configuration
 3. Ensure build process works
@@ -461,6 +512,7 @@ Claude, prepare the project for deployment:
 ## Quick Reference Card
 
 ### Essential Commands
+
 ```bash
 npm run dev          # Development mode
 npm test            # Run tests
@@ -470,12 +522,14 @@ npm run test:visual # Visual testing
 ```
 
 ### File Locations
+
 - Language definition: `src/prism-lang-fsh.js`
 - Tests: `test/prism-lang-fsh.test.js`
 - Examples: `examples/demo.html`
 - Visual test: `test/visual.html`
 
 ### Commit Message Format
+
 ```
 feat: add support for async functions
 fix: correct string escaping issue

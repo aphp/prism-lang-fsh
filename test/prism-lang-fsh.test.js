@@ -19,23 +19,24 @@ require('../src/prism-lang-fsh');
 
 // Test utilities
 function hasTokenType(tokens, type) {
-  return tokens.some(token =>
-    typeof token === 'object' &&
-        (token.type === type ||
-         (Array.isArray(token.alias) ? token.alias.includes(type) : token.alias === type))
+  return tokens.some(
+    (token) =>
+      typeof token === 'object' &&
+      (token.type === type ||
+        (Array.isArray(token.alias) ? token.alias.includes(type) : token.alias === type))
   );
 }
 
 function findTokensByType(tokens, type) {
-  return tokens.filter(token =>
-    typeof token === 'object' &&
-        (token.type === type ||
-         (Array.isArray(token.alias) ? token.alias.includes(type) : token.alias === type))
+  return tokens.filter(
+    (token) =>
+      typeof token === 'object' &&
+      (token.type === type ||
+        (Array.isArray(token.alias) ? token.alias.includes(type) : token.alias === type))
   );
 }
 
 describe('FSH Language Definition', () => {
-
   test('should be properly loaded', () => {
     expect(global.Prism).toBeDefined();
     expect(global.Prism.languages.fsh).toBeDefined();
@@ -55,7 +56,10 @@ describe('FSH Language Definition', () => {
     });
 
     test('should handle comments at end of line', () => {
-      const tokens = Prism.tokenize('* status = #active // End of line comment', Prism.languages.fsh);
+      const tokens = Prism.tokenize(
+        '* status = #active // End of line comment',
+        Prism.languages.fsh
+      );
       expect(hasTokenType(tokens, 'comment')).toBe(true);
     });
   });
@@ -72,18 +76,29 @@ describe('FSH Language Definition', () => {
     });
 
     test('should handle complex alias names', () => {
-      const tokens = Prism.tokenize('Alias: $v2-0203 = http://terminology.hl7.org/CodeSystem/v2-0203', Prism.languages.fsh);
+      const tokens = Prism.tokenize(
+        'Alias: $v2-0203 = http://terminology.hl7.org/CodeSystem/v2-0203',
+        Prism.languages.fsh
+      );
       expect(hasTokenType(tokens, 'alias')).toBe(true);
     });
   });
 
   describe('Definition Keywords', () => {
     const definitionKeywords = [
-      'Profile', 'Extension', 'Instance', 'ValueSet', 'CodeSystem',
-      'RuleSet', 'Invariant', 'Mapping', 'Logical', 'Resource'
+      'Profile',
+      'Extension',
+      'Instance',
+      'ValueSet',
+      'CodeSystem',
+      'RuleSet',
+      'Invariant',
+      'Mapping',
+      'Logical',
+      'Resource'
     ];
 
-    definitionKeywords.forEach(keyword => {
+    definitionKeywords.forEach((keyword) => {
       test(`should highlight ${keyword} keyword`, () => {
         const tokens = Prism.tokenize(`${keyword}: Test${keyword}`, Prism.languages.fsh);
         expect(hasTokenType(tokens, 'definition-keyword')).toBe(true);
@@ -93,11 +108,21 @@ describe('FSH Language Definition', () => {
 
   describe('Metadata Keywords', () => {
     const metadataKeywords = [
-      'Id', 'Parent', 'Title', 'Description', 'Usage',
-      'Source', 'Target', 'Severity', 'XPath', 'Expression', 'Context', 'InstanceOf'
+      'Id',
+      'Parent',
+      'Title',
+      'Description',
+      'Usage',
+      'Source',
+      'Target',
+      'Severity',
+      'XPath',
+      'Expression',
+      'Context',
+      'InstanceOf'
     ];
 
-    metadataKeywords.forEach(keyword => {
+    metadataKeywords.forEach((keyword) => {
       test(`should highlight ${keyword} keyword`, () => {
         const tokens = Prism.tokenize(`${keyword}: test-value`, Prism.languages.fsh);
         expect(hasTokenType(tokens, 'metadata-keyword')).toBe(true);
@@ -159,7 +184,7 @@ describe('FSH Language Definition', () => {
   describe('Cardinalities', () => {
     const cardinalities = ['1..1', '0..*', '1..*', '0..5', '2..10'];
 
-    cardinalities.forEach(cardinality => {
+    cardinalities.forEach((cardinality) => {
       test(`should highlight cardinality ${cardinality}`, () => {
         const tokens = Prism.tokenize(cardinality, Prism.languages.fsh);
         expect(hasTokenType(tokens, 'cardinality')).toBe(true);
@@ -170,7 +195,7 @@ describe('FSH Language Definition', () => {
   describe('Flags and Modifiers', () => {
     const flags = ['MS', 'SU', 'D', 'TU', 'N', '?!'];
 
-    flags.forEach(flag => {
+    flags.forEach((flag) => {
       test(`should highlight flag ${flag}`, () => {
         const tokens = Prism.tokenize(`* identifier ${flag}`, Prism.languages.fsh);
         expect(hasTokenType(tokens, 'modifier')).toBe(true);
@@ -201,7 +226,10 @@ describe('FSH Language Definition', () => {
     });
 
     test('should highlight deeply nested paths', () => {
-      const tokens = Prism.tokenize('* extension[birthPlace].valueAddress.city', Prism.languages.fsh);
+      const tokens = Prism.tokenize(
+        '* extension[birthPlace].valueAddress.city',
+        Prism.languages.fsh
+      );
       expect(hasTokenType(tokens, 'rule-path')).toBe(true);
     });
 
@@ -211,18 +239,33 @@ describe('FSH Language Definition', () => {
     });
 
     test('should highlight complex caret rules', () => {
-      const tokens = Prism.tokenize('* ^slicing.discriminator.type = #pattern', Prism.languages.fsh);
+      const tokens = Prism.tokenize(
+        '* ^slicing.discriminator.type = #pattern',
+        Prism.languages.fsh
+      );
       expect(hasTokenType(tokens, 'caret-rule')).toBe(true);
     });
   });
 
   describe('Action Keywords', () => {
     const actionKeywords = [
-      'contains', 'only', 'obeys', 'and', 'or', 'includes', 'excludes',
-      'from', 'named', 'insert', 'codes', 'system', 'valueset', 'where'
+      'contains',
+      'only',
+      'obeys',
+      'and',
+      'or',
+      'includes',
+      'excludes',
+      'from',
+      'named',
+      'insert',
+      'codes',
+      'system',
+      'valueset',
+      'where'
     ];
 
-    actionKeywords.forEach(keyword => {
+    actionKeywords.forEach((keyword) => {
       test(`should highlight action keyword ${keyword}`, () => {
         const tokens = Prism.tokenize(`* value[x] ${keyword} something`, Prism.languages.fsh);
         expect(hasTokenType(tokens, 'action-keyword')).toBe(true);
@@ -230,7 +273,10 @@ describe('FSH Language Definition', () => {
     });
 
     test('should handle complex contains syntax', () => {
-      const tokens = Prism.tokenize('* address contains home 0..1 and work 0..*', Prism.languages.fsh);
+      const tokens = Prism.tokenize(
+        '* address contains home 0..1 and work 0..*',
+        Prism.languages.fsh
+      );
       expect(hasTokenType(tokens, 'action-keyword')).toBe(true);
       expect(hasTokenType(tokens, 'cardinality')).toBe(true);
     });
@@ -239,7 +285,7 @@ describe('FSH Language Definition', () => {
   describe('Binding Strengths', () => {
     const bindingStrengths = ['required', 'extensible', 'preferred', 'example'];
 
-    bindingStrengths.forEach(strength => {
+    bindingStrengths.forEach((strength) => {
       test(`should highlight binding strength ${strength}`, () => {
         const tokens = Prism.tokenize(`* code from ValueSet (${strength})`, Prism.languages.fsh);
         expect(hasTokenType(tokens, 'binding-strength')).toBe(true);
@@ -254,12 +300,18 @@ describe('FSH Language Definition', () => {
     });
 
     test('should highlight HTTPS URLs', () => {
-      const tokens = Prism.tokenize('https://hl7.org/fhir/ValueSet/identifier-type', Prism.languages.fsh);
+      const tokens = Prism.tokenize(
+        'https://hl7.org/fhir/ValueSet/identifier-type',
+        Prism.languages.fsh
+      );
       expect(hasTokenType(tokens, 'url')).toBe(true);
     });
 
     test('should handle URLs in rule context', () => {
-      const tokens = Prism.tokenize('* type from http://hl7.org/fhir/ValueSet/identifier-type', Prism.languages.fsh);
+      const tokens = Prism.tokenize(
+        '* type from http://hl7.org/fhir/ValueSet/identifier-type',
+        Prism.languages.fsh
+      );
       expect(hasTokenType(tokens, 'url')).toBe(true);
     });
   });
@@ -407,7 +459,7 @@ Parent: Observation
 
     test('should handle whitespace only', () => {
       const tokens = Prism.tokenize('   \n  \t  ', Prism.languages.fsh);
-      expect(tokens.every(token => typeof token === 'string')).toBe(true);
+      expect(tokens.every((token) => typeof token === 'string')).toBe(true);
     });
 
     test('should handle mixed content', () => {
@@ -420,7 +472,10 @@ Parent: Observation
     });
 
     test('should handle nested comments correctly', () => {
-      const tokens = Prism.tokenize('/* Comment /* not nested */ still comment */', Prism.languages.fsh);
+      const tokens = Prism.tokenize(
+        '/* Comment /* not nested */ still comment */',
+        Prism.languages.fsh
+      );
       expect(hasTokenType(tokens, 'comment')).toBe(true);
     });
 
@@ -591,9 +646,9 @@ Title: "Test Fixture Profile"
     // Test loading fixture files
     let fileProcessed = false;
     if (fs.existsSync(fixtureDir)) {
-      const files = fs.readdirSync(fixtureDir).filter(f => f.endsWith('.fsh'));
+      const files = fs.readdirSync(fixtureDir).filter((f) => f.endsWith('.fsh'));
 
-      files.forEach(file => {
+      files.forEach((file) => {
         const content = fs.readFileSync(path.join(fixtureDir, file), 'utf8');
         const tokens = Prism.tokenize(content, Prism.languages.fsh);
         fileProcessed = true;
