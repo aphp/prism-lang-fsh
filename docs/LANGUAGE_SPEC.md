@@ -283,7 +283,7 @@ FSH keywords can appear as part of paths:
 FSH identifiers support a flexible character set to accommodate real-world naming conventions:
 
 - **Start character**: Must begin with a letter (A-Z, a-z)
-- **Allowed characters**: Letters, numbers, underscores (_), hyphens (-), and dots (.)
+- **Allowed characters**: Letters, numbers, underscores (\_), hyphens (-), and dots (.)
 - **Examples**:
   ```fsh
   myIdentifier

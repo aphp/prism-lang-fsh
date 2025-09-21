@@ -212,7 +212,7 @@ Context: Patient
       <h2>FSH Mapping Definition</h2>
       <p class="description">Mapping FSH profiles to external standards.</p>
       <pre><code class="language-fsh">Mapping: PatientToV2
-Id: patient-to-v2
+Id: patient-system-to-v2
 Title: "Patient to HL7 v2 Mapping"
 Source: USCorePatientProfile
 Target: "HL7 v2 PID"
@@ -222,6 +222,45 @@ Target: "HL7 v2 PID"
 * name.given -> "PID.5.2"
 * birthDate -> "PID.7"
 * gender -> "PID.8"</code></pre>
+    </div>
+
+    <!-- Identifier Keyword Conflict Test -->
+    <div class="demo-section">
+      <h2>Test des identifiants avec mots-clés</h2>
+      <p class="description">
+        Test de la correction du conflit entre identifiants et mots-clés d'action. Les identifiants
+        contenant des mots-clés ne doivent PAS être surlignés comme des mots-clés.
+      </p>
+      <pre><code class="language-fsh">// Identifiants contenant des mots-clés (ne doivent PAS être surlignés)
+Profile: ContainerOnlyProfile
+Parent: Patient
+Title: "Profile with identifiers containing keywords"
+
+* containerData 1..1
+* systemOnly 0..*
+* includesValue 1..1
+* fromLocation 0..1
+* namedElement 0..1
+* insertData 0..1
+* codesReference 0..1
+* whereCondition 0..1
+* andOperator 0..1
+* orOperator 0..1
+* obeysSomething 0..1
+* excludesData 0..1
+* valuesetReference 0..1
+
+// Vrais mots-clés d'action (DOIVENT être surlignés)
+* value[x] only string
+* code from MyValueSet (required)
+* address contains home 0..1 and work 0..*
+* obeys my-invariant
+* category includes #active
+* exclude codes from BadValueSet
+* insert CommonRules
+* codes from system $sct
+* valueset from "http://example.org/vs"
+* element where status = #active</code></pre>
     </div>
 
     <!-- Load Prism.js core -->

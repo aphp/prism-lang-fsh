@@ -159,7 +159,7 @@
     // Action keywords and binding keywords
     'action-keyword': {
       pattern:
-        /\b(contains|only|obeys|and|or|includes|excludes|from|named|insert|codes|system|valueset|where)\b/,
+        /(?<![A-Za-z0-9_.-])(contains|only|obeys|and|or|includes|excludes|from|named|insert|codes|system|valueset|where)(?![A-Za-z0-9_.-])/,
       alias: 'keyword'
     },
 
