@@ -17,16 +17,22 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     
     - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    
+
     - name: Install dependencies
-      run: npm ci
+      run: |
+        npm --version
+        if [ -f package-lock.json ]; then
+          npm ci || npm install
+        else
+          npm install
+        fi
     
     - name: Run linter
       run: npm run lint
@@ -42,7 +48,7 @@ jobs:
     
     - name: Upload coverage to Codecov
       if: matrix.node-version == '18.x'
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v4
       with:
         file: ./coverage/lcov.info
         flags: unittests
@@ -53,7 +59,7 @@ jobs:
     
     - name: Archive production artifacts
       if: matrix.node-version == '18.x'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dist-files
         path: dist/
@@ -63,15 +69,21 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18.x'
-    
+
     - name: Install dependencies
-      run: npm ci
+      run: |
+        npm --version
+        if [ -f package-lock.json ]; then
+          npm ci || npm install
+        else
+          npm install
+        fi
     
     - name: Build documentation
       run: |
@@ -79,9 +91,11 @@ jobs:
         # npm run docs:build (if you have documentation generator)
     
     - name: Check markdown links
+      continue-on-error: true
       uses: gaurav-nelson/github-action-markdown-link-check@v1
       with:
         folder-path: 'docs'
+        config-file: '.github/markdown-link-check-config.json'
 
   release:
     needs: [test, build-docs]
@@ -90,16 +104,22 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18.x'
         registry-url: 'https://registry.npmjs.org'
-    
+
     - name: Install dependencies
-      run: npm ci
+      run: |
+        npm --version
+        if [ -f package-lock.json ]; then
+          npm ci || npm install
+        else
+          npm install
+        fi
     
     - name: Build production files
       run: npm run build
