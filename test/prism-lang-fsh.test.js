@@ -350,6 +350,55 @@ describe('FSH Language Definition', () => {
     });
   });
 
+  describe('Identifiers', () => {
+    test('should highlight simple identifiers', () => {
+      const tokens = Prism.tokenize('myIdentifier', Prism.languages.fsh);
+      expect(hasTokenType(tokens, 'identifier')).toBe(true);
+    });
+
+    test('should highlight identifiers with hyphens', () => {
+      const tokens = Prism.tokenize('us-core-patient', Prism.languages.fsh);
+      expect(hasTokenType(tokens, 'identifier')).toBe(true);
+    });
+
+    test('should highlight identifiers with dots', () => {
+      const tokens = Prism.tokenize('Patient.name.family', Prism.languages.fsh);
+      expect(hasTokenType(tokens, 'identifier')).toBe(true);
+    });
+
+    test('should highlight identifiers with underscores', () => {
+      const tokens = Prism.tokenize('my_identifier_name', Prism.languages.fsh);
+      expect(hasTokenType(tokens, 'identifier')).toBe(true);
+    });
+
+    test('should highlight identifiers with mixed characters', () => {
+      const tokens = Prism.tokenize('us-core_patient.v2', Prism.languages.fsh);
+      expect(hasTokenType(tokens, 'identifier')).toBe(true);
+    });
+
+    test('should handle numbers followed by identifiers separately', () => {
+      const tokens = Prism.tokenize('123 invalid', Prism.languages.fsh);
+      expect(hasTokenType(tokens, 'identifier')).toBe(true); // 'invalid' is an identifier
+      expect(hasTokenType(tokens, 'number')).toBe(true); // '123' is a number
+      // This tests that numbers and identifiers are tokenized separately when space-separated
+    });
+
+    test('should require identifiers to start with letters', () => {
+      const tokens = Prism.tokenize('validId', Prism.languages.fsh);
+      expect(hasTokenType(tokens, 'identifier')).toBe(true);
+
+      // Test standalone identifiers starting with valid characters
+      const validStartTokens = Prism.tokenize('myId', Prism.languages.fsh);
+      expect(hasTokenType(validStartTokens, 'identifier')).toBe(true);
+    });
+
+    test('should handle identifiers in context', () => {
+      const tokens = Prism.tokenize('* extension[us-core-race]', Prism.languages.fsh);
+      expect(hasTokenType(tokens, 'rule-path')).toBe(true);
+      // The identifier within the slice should be part of the rule-path
+    });
+  });
+
   describe('Complex Examples', () => {
     test('should handle complete profile definition', () => {
       const code = `

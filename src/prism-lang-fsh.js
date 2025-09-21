@@ -191,7 +191,7 @@
     punctuation: /[(){}[\],]/,
 
     // Identifiers (catch-all for remaining words)
-    identifier: /\b[a-zA-Z_]\w*\b/
+    identifier: /[A-Za-z][A-Za-z0-9_.-]*/
   };
 
   // Handle nested contexts

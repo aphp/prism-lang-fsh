@@ -278,6 +278,21 @@ FSH keywords can appear as part of paths:
 * component.code  // 'code' here is a property, not a keyword
 ```
 
+### Identifiers
+
+FSH identifiers support a flexible character set to accommodate real-world naming conventions:
+
+- **Start character**: Must begin with a letter (A-Z, a-z)
+- **Allowed characters**: Letters, numbers, underscores (_), hyphens (-), and dots (.)
+- **Examples**:
+  ```fsh
+  myIdentifier
+  us-core-patient
+  Patient.name.family
+  my_identifier_name
+  us-core_patient.v2
+  ```
+
 ### Special Characters in Identifiers
 
 ```fsh

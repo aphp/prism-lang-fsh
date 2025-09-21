@@ -155,13 +155,14 @@ The plugin recognizes and highlights these FSH language elements:
 - **Bindings**: `(required)`, `(extensible)`, `(preferred)`, `(example)`
 - **URLs**: `http://example.org/ValueSet/test`
 - **Strings**: `"text"` and `"""multi-line"""`
+- **Identifiers**: `myId`, `us-core-patient`, `Patient.name.family`
 
 ## 🧪 Development
 
 ### Prerequisites
 
-- Node.js >= 14.0.0
-- npm >= 6.0.0
+- Node.js >= 16.0.0
+- npm >= 8.0.0
 - Git
 
 ### Setup
@@ -295,3 +296,4 @@ This plugin provides comprehensive syntax highlighting for all major FSH languag
 | Strings       | ✅ Full | `"text"`, `"""multi-line"""`               |
 | Paths         | ✅ Full | `extension[name].value[x]`                 |
 | Caret Rules   | ✅ Full | `* ^status = #active`                      |
+| Identifiers   | ✅ Full | `myId`, `us-core-patient`, `name.family`   |
