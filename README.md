@@ -272,10 +272,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Issue Tracker](https://github.com/aphp/prism-lang-fsh/issues)
 - [Discussions](https://github.com/aphp/prism-lang-fsh/discussions)
 
----
-
-**Status**: ✅ Production Ready - Full FSH v3.0.0 support with comprehensive testing
-
 ### Token Coverage
 
 This plugin provides comprehensive syntax highlighting for all major FSH language constructs:
@@ -297,3 +293,9 @@ This plugin provides comprehensive syntax highlighting for all major FSH languag
 | Paths         | ✅ Full | `extension[name].value[x]`                 |
 | Caret Rules   | ✅ Full | `* ^status = #active`                      |
 | Identifiers   | ✅ Full | `myId`, `us-core-patient`, `name.family`   |
+
+---
+
+**Status**: ✅ Production Ready - Full FSH v3.0.0 support with comprehensive testing
+
+partially developped with Claude Code
